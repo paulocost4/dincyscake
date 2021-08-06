@@ -50,6 +50,14 @@ body {
   .itemNavBar:first-child{
     display: none;
   }
+  .app{
+    width: auto;
+  }
+}
+@media screen and (max-width: 416px){
+  .itemNavBar{
+    padding: 5px;
+  }
 }
 .itemNavBar:hover{
   color: #fff;
@@ -112,7 +120,7 @@ body {
 .images{
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  /* flex-direction: row; */
   list-style-type: none;
   width: 100%;
   justify-content: center;
@@ -120,34 +128,29 @@ body {
 
 }
 .images li{
+  display: flex;
+  background-size: cover;
   height: 350px;
   margin: 10px;
-}
-.small{
-  display: flex;
-  flex-basis: 40%;
-  background-size: cover;
-  background-position:center;
-  
-}
-.medium{
-  display: flex;
-  flex-basis: 55%;
-  background-size: cover;
-  /* background-position:center; */
-
- 
-}
-.large{
-  display: flex;
-  flex-basis: 96.5%;
-  background-size: cover;
-  background-position:center;
-
-}
-.images li {
   border-radius: 10px;
   box-shadow: 0 0 3px 0px;
+}
+.small{
+  flex-basis: 40%;
+}
+.medium{
+  flex-basis: 55%;
+}
+.large{
+  flex-basis: 96.5%;
+}
+@media screen and (max-width: 800px){
+  .images *{
+    flex-basis: 100%;
+  }
+}
+.main section h3, .main section p{
+  text-align: center;
 }
 
 
