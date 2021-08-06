@@ -28,10 +28,16 @@
   margin-top: 10px;
 }
 .itemNavBar{
+  align-items: center;
+  display: flex;
   text-decoration: none;
   color: #f12a5e;
   padding: 16px;
   font-weight: bold;
+}
+.navBar{
+  display: flex;
+  height: inherit;
 }
 body {
   background-color: #fff;
@@ -134,10 +140,14 @@ body {
 }
 .large{
   display: flex;
-  flex-basis: 100%;
+  flex-basis: 96.5%;
   background-size: cover;
   background-position:center;
 
+}
+.images li {
+  border-radius: 10px;
+  box-shadow: 0 0 3px 0px;
 }
 
 
