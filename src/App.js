@@ -55,9 +55,9 @@ function App() {
                 <li className='medium' style={{backgroundImage: `url(${cake2})`}} alt='Cake' ></li>
                 <li className='medium' style={{backgroundImage: `url(${cake3})`}} alt='Cake' ></li>
                 <li className='small' style={{backgroundImage: `url(${cake4})`}} alt='Cake' ></li>
-                {/* <li className='medium' style={{backgroundImage: `url(${cake5})`}} alt='Cake' ></li> */}
-                {/* <li className='small' style={{backgroundImage: `url(${cake6})`}} alt='Cake' ></li> 
-                <li className='large' style={{backgroundImage: `url(${cake7})`}} alt='Cake' ></li>  */}
+                <li className='small' style={{backgroundImage: `url(${cake5})`}} alt='Cake' ></li>
+                <li className='medium' style={{backgroundImage: `url(${cake6})`}} alt='Cake' ></li> 
+                <li className='large' style={{backgroundImage: `url(${cake7})`}} alt='Cake' ></li> 
               </ul>
 
             </section>

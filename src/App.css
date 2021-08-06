@@ -60,7 +60,7 @@ body {
 
 .main{
   display: flex;
-  height: 100%;
+  height: auto;
   width: 100%;
   margin: 100px 0px;
 }
