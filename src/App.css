@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+/* Fonte Logo*/
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
+.App{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.areaLogo{
+  display: flex;
+  align-items: center;
+  
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.logo{
+  width: 50px;
+  height: 50px;
+}
+.areaNavBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.itemNavBar{
+  text-decoration: none;
+  color: #f12a5e;
+  padding: 16px;
+  font-weight: bold;
+}
+body {
+  background-color: #fff;
+}
+@media screen and (max-width: 700px) {
+  .areaNavBar{
+    flex-direction: column;
+    height: 100px;
+  }
+  .itemNavBar:first-child{
+    display: none;
   }
 }
+.itemNavBar:hover{
+  color: #fff;
+  background-color: #f12a5e;
+}
+.tituloLogo{
+  margin: 0;
+  color: #f12a5e;
+  font-family: 'Style Script';
+  
+  margin-left: 8px;
+  font-weight: bold;
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 100px 0px;
+}
+.main section{
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.footer{
+  display: flex;
+  height: 150px;
+  background-color: salmon;
 }
 
-.App-link {
-  color: #61dafb;
+.banner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-image: url(./images/banner.jpg);
+  background-position: center;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 100px 0px ;
+}
+.banner h1, .banner h3, .banner h4{
+  color: #fff;
+  margin: 20px;
+  font-weight: bolder;
+}
+.banner button{
+  padding: 10px 20px;
+  background-color: snow;
+  border: 0;
+  font-weight: bolder;
+  margin-top: 10px;
+  color: grey;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.images{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  list-style-type: none;
+  width: 100%;
+  justify-content: center;
+  padding: 0px;
+
 }
+.images li{
+  height: 350px;
+  margin: 10px;
+}
+.small{
+  display: flex;
+  flex-basis: 40%;
+  background-size: cover;
+  background-position:center;
+  
+}
+.medium{
+  display: flex;
+  flex-basis: 55%;
+  background-size: cover;
+  /* background-position:center; */
+
+ 
+}
+.large{
+  display: flex;
+  flex-basis: 100%;
+  background-size: cover;
+  background-position:center;
+
+}
+
+
