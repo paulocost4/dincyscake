@@ -19,7 +19,7 @@ function TextoDaSeçao(props){
   )
 }
 
-//  <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
+//  ex: <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
 function Imagens(props){
   console.log(props)
   return(
@@ -29,13 +29,6 @@ function Imagens(props){
           <li className={props.tipo[key]} style={{backgroundImage: `url(${value})`}}  ></li>
         )
       })}
-{/*       
-      <li className='medium' style={{backgroundImage: `url(${cake2})`}}  ></li>
-      <li className='medium' style={{backgroundImage: `url(${cake3})`}}  ></li>
-      <li className='small' style={{backgroundImage: `url(${cake4})`}} ></li>
-      <li className='small' style={{backgroundImage: `url(${cake5})`}} ></li>
-      <li className='medium' style={{backgroundImage: `url(${cake6})`}}  ></li> 
-      <li className='large' style={{backgroundImage: `url(${cake7})`}} alt='Cake' ></li>  */}
     </ul>
   )
 }
@@ -44,14 +37,6 @@ function App() {
   return (
     
     <div className="App">
-        {/*
-        
-          To do list
-          []  Ajustar a navBar para não ficar enstranho quando passar o mouse sobre o navItem
-          []  Prencher o contant com imagens e algumas informações sobre o site (basicamente uma propaganda do proprios site)
-          []  Ver o porquê de as imagens estarem sobrepondo os outros elementos
-        
-        */}
         <div className='areaNavBar'>
           <div className='areaLogo'>
             <a href='#home' style={{textDecoration: 'none', flexDirection: 'row', display: 'flex'}}>
@@ -79,11 +64,14 @@ function App() {
             
               
 
-              <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
-            
-              
+          <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
+          <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
+          
+          <TextoDaSeçao  texto='Se nada der certo, tente um saboroso pedaço de bolo com cobertura!' />
+          <Imagens src={[cake3, cake4]} tipo={['medium', 'small']} />
 
-              <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
+          <TextoDaSeçao  texto='E para os apaixonados por receitas com maracujá, apresento-lhes a felicidade' />
+          <Imagens src={[cake5, cake6]} tipo={['medium', 'small']} />
 
             
             
