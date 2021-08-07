@@ -19,6 +19,27 @@ function TextoDaSeçao(props){
   )
 }
 
+//  <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
+function Imagens(props){
+  console.log(props)
+  return(
+    <ul className='images'>
+      {props.src.map((value, key)=>{
+        return(
+          <li className={props.tipo[key]} style={{backgroundImage: `url(${value})`}}  ></li>
+        )
+      })}
+{/*       
+      <li className='medium' style={{backgroundImage: `url(${cake2})`}}  ></li>
+      <li className='medium' style={{backgroundImage: `url(${cake3})`}}  ></li>
+      <li className='small' style={{backgroundImage: `url(${cake4})`}} ></li>
+      <li className='small' style={{backgroundImage: `url(${cake5})`}} ></li>
+      <li className='medium' style={{backgroundImage: `url(${cake6})`}}  ></li> 
+      <li className='large' style={{backgroundImage: `url(${cake7})`}} alt='Cake' ></li>  */}
+    </ul>
+  )
+}
+
 function App() {
   return (
     
@@ -60,15 +81,9 @@ function App() {
 
               <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
             
-              <ul className='images'>
-                <li className='small' style={{backgroundImage: `url(${cake1})`}} ></li>
-                <li className='medium' style={{backgroundImage: `url(${cake2})`}} alt='Cake' ></li>
-                <li className='medium' style={{backgroundImage: `url(${cake3})`}} alt='Cake' ></li>
-                <li className='small' style={{backgroundImage: `url(${cake4})`}} alt='Cake' ></li>
-                <li className='small' style={{backgroundImage: `url(${cake5})`}} alt='Cake' ></li>
-                <li className='medium' style={{backgroundImage: `url(${cake6})`}} alt='Cake' ></li> 
-                {/* <li className='large' style={{backgroundImage: `url(${cake7})`}} alt='Cake' ></li>  */}
-              </ul>
+              
+
+              <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
 
             
             
