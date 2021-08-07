@@ -10,6 +10,15 @@ import cake6 from './images/cake6.jpg'
 import cake7 from './images/cake7.jpg'
 
 
+function TextoDaSeçao(props){
+  return(
+    <section className='textoSeçao'>
+      <h3>{props.titulo}</h3>
+      <p>{props.texto}</p>
+    </section>
+  )
+}
+
 function App() {
   return (
     
@@ -46,9 +55,10 @@ function App() {
         
         <main className='main'>
           
-            <section>
-              <h3>Os nossos bolos</h3>
-              <p>Tudo feito com muito amor e carinho diretamente para você</p>
+            
+              
+
+              <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
             
               <ul className='images'>
                 <li className='small' style={{backgroundImage: `url(${cake1})`}} ></li>
@@ -57,10 +67,10 @@ function App() {
                 <li className='small' style={{backgroundImage: `url(${cake4})`}} alt='Cake' ></li>
                 <li className='small' style={{backgroundImage: `url(${cake5})`}} alt='Cake' ></li>
                 <li className='medium' style={{backgroundImage: `url(${cake6})`}} alt='Cake' ></li> 
-                <li className='large' style={{backgroundImage: `url(${cake7})`}} alt='Cake' ></li> 
+                {/* <li className='large' style={{backgroundImage: `url(${cake7})`}} alt='Cake' ></li>  */}
               </ul>
 
-            </section>
+            
             
             
 
