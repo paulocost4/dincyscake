@@ -84,11 +84,7 @@ body {
   justify-content: center;
 }
 
-.footer{
-  display: flex;
-  height: 150px;
-  background-color: salmon;
-}
+
 
 .banner{
   display: flex;
@@ -159,3 +155,52 @@ body {
   margin-bottom: 45px;
 }
 
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #282c2f;
+}
+
+.footer .column1, .footer .column2, .footer .column3{
+  display: flex;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+  padding: 10px;
+  width: 200px; 
+}
+
+.column1{
+  /* border: 1px solid #c1c1c1; */
+  /* background-color: blue; */
+}
+.column2{
+  /* border: 1px solid #c1c1c1; */
+  /* background-color: blueviolet; */
+}
+.column3{
+  /* border: 1px solid #c1c1c1; */
+  /* background-color: burlywood; */
+}
+
+.footer hr{
+  border: 0;
+  margin: 0;
+  width: 1px;
+  background-color: #c1c1c1;
+}
+.footer p{
+  color: #fff;
+  margin: 8px;
+  text-align: center;
+}
+
+/* estilos dos icones do footer */
+.column2 i {
+  height: 50px;
+  width: 50px;
+  background-color: snow;
+}

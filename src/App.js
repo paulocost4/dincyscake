@@ -1,13 +1,16 @@
 import './App.css';
 import donut from './images/donut.png'
-import banner from './images/banner.jpg'
+// import banner from './images/banner.jpg'
 import cake1 from './images/cake1.jpg'
 import cake2 from './images/cake2.jpg'
 import cake3 from './images/cake3.jpg'
 import cake4 from './images/cake4.jpg'
 import cake5 from './images/cake5.jpg'
 import cake6 from './images/cake6.jpg'
-import cake7 from './images/cake7.jpg'
+// import cake7 from './images/cake7.jpg'
+
+// import FontAwesome from 'react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 function TextoDaSeçao(props){
@@ -21,7 +24,6 @@ function TextoDaSeçao(props){
 
 //  ex: <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
 function Imagens(props){
-  console.log(props)
   return(
     <ul className='images'>
       {props.src.map((value, key)=>{
@@ -33,17 +35,23 @@ function Imagens(props){
   )
 }
 
+function Logo(){
+  return(
+    <div className='areaLogo'>
+      <a href='#home' style={{textDecoration: 'none', flexDirection: 'row', display: 'flex'}}>
+        <img className='logo' src={donut} alt='Imagem donut'></img>
+        <h1 className='tituloLogo' >Dincy's Cake</h1>
+      </a>
+    </div> 
+  )
+}
+
 function App() {
   return (
     
     <div className="App">
         <div className='areaNavBar'>
-          <div className='areaLogo'>
-            <a href='#home' style={{textDecoration: 'none', flexDirection: 'row', display: 'flex'}}>
-              <img className='logo' src={donut} alt='Imagem donut'></img>
-              <h1 className='tituloLogo' >Dincy's Cake</h1>
-            </a>
-          </div>  
+          <Logo/> 
           <nav className='navBar'>
             <a className='itemNavBar' href="#home">Home</a>
             <a className='itemNavBar' href="#produtos">Produtos</a>
@@ -80,7 +88,22 @@ function App() {
         </main>
 
         <footer className='footer'>
-          <p>footer</p>
+          <div className='column1'>
+            <Logo/>
+            <p>Apenas uma lojinha de bolo começando a brilhar, ajude-nos nessa jornada</p>
+            <p>Dincy's Cake { new Date().getFullYear().toString() === '2021' ? '2021' : '2021-' + new Date().getFullYear().toString() } ©</p>
+            <p>Desenvolvido por Paulo C.</p>
+          </div>
+          <hr/>
+          <div className='column2'>
+            <h4>Entre em contato</h4>
+            {/* <FontAwesomeIcon icon={["fab", "twitter"]} size='16' color='#fff' /> */}
+          </div>
+          <hr/>
+          
+          <div className='column3'>
+            coluna3
+          </div>
         </footer>
       
     </div>
