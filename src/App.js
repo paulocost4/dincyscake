@@ -13,6 +13,8 @@ import cake6 from './images/cake6.jpg'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
+import { FaInstagramSquare, FaFacebookSquare, FaWhatsappSquare } from "react-icons/fa";
+
 function TextoDaSeçao(props){
   return(
     <section className='textoSeçao'>
@@ -94,11 +96,27 @@ function App() {
             <p>Dincy's Cake { new Date().getFullYear().toString() === '2021' ? '2021' : '2021-' + new Date().getFullYear().toString() } ©</p>
             <p>Desenvolvido por Paulo C.</p>
           </div>
+         
           <hr/>
+{/* Coluna com: entre em contato (redes sociais, endereço, telefone e email)
+Coluna com:  Suporte,   faça uma doação,  */}
           <div className='column2'>
             <h4>Entre em contato</h4>
-            {/* <FontAwesomeIcon icon={["fab", "twitter"]} size='16' color='#fff' /> */}
+            <div className='areaContatos' >
+              
+                <p>(74)98825-7734</p>
+                <p>Rua Dr Clodoaldo Avelino N°680 Centro</p>
+                <p>pcesarcosta@outlook.com</p>
+              
+              <div className='areaIcones'>
+                <FaInstagramSquare className='iconFooter' />
+                <FaFacebookSquare className='iconFooter'/>
+                <FaWhatsappSquare className='iconFooter' />
+              </div>
+              
+            </div>
           </div>
+         
           <hr/>
           
           <div className='column3'>

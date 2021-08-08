@@ -170,7 +170,7 @@ body {
   flex-direction: column;
   
   padding: 10px;
-  width: 200px; 
+  width: 400px; 
 }
 
 .column1{
@@ -178,8 +178,7 @@ body {
   /* background-color: blue; */
 }
 .column2{
-  /* border: 1px solid #c1c1c1; */
-  /* background-color: blueviolet; */
+  
 }
 .column3{
   /* border: 1px solid #c1c1c1; */
@@ -187,20 +186,34 @@ body {
 }
 
 .footer hr{
+  height: 150px;
   border: 0;
   margin: 0;
   width: 1px;
   background-color: #c1c1c1;
+  align-self: center;
 }
-.footer p{
+.footer p, .footer h4{
   color: #fff;
   margin: 8px;
   text-align: center;
+  font-family: montserrat;
 }
 
-/* estilos dos icones do footer */
-.column2 i {
-  height: 50px;
-  width: 50px;
-  background-color: snow;
+
+.iconFooter{
+  height: 30px;
+  width: 30px;
+  color: #000;
+}
+.areaContatos{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+}
+.areaContatos .areaIcones{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
