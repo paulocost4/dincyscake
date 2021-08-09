@@ -143,6 +143,9 @@ body {
   .images *{
     flex-basis: 100%;
   }
+  .images .small{
+    display: none;
+  }
 }
 .main h3, .main p{
   text-align: center;
@@ -180,9 +183,11 @@ body {
 .column2{
   
 }
-.column3{
-  /* border: 1px solid #c1c1c1; */
-  /* background-color: burlywood; */
+.column3 a{
+  text-decoration: none;
+}
+.column3 a:hover{
+  font-weight: bold;
 }
 
 .footer hr{
@@ -217,3 +222,27 @@ body {
   flex-direction: row;
   justify-content: center;
 }
+
+@media screen and (max-width: 800px){
+  .footer{
+    flex-direction: column;
+    justify-content: center;
+  }
+  .footer .column1{
+    width: 100%;
+    padding: 10px 0;
+  }
+  .footer .column2{
+    width: 100%;
+    padding: 10px 0;
+  }
+  .footer .column3{
+    width: 100%;
+    padding: 10px 0;
+  }
+  .footer hr{
+    width: 85%;
+    height: 1px;
+  }
+}
+

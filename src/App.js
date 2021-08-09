@@ -30,7 +30,7 @@ function Imagens(props){
     <ul className='images'>
       {props.src.map((value, key)=>{
         return(
-          <li className={props.tipo[key]} style={{backgroundImage: `url(${value})`}}  ></li>
+          <li key={value} className={props.tipo[key]} style={{backgroundImage: `url(${value})`}}  ></li>
         )
       })}
     </ul>
@@ -90,38 +90,34 @@ function App() {
         </main>
 
         <footer className='footer'>
+          
           <div className='column1'>
             <Logo/>
             <p>Apenas uma lojinha de bolo começando a brilhar, ajude-nos nessa jornada</p>
             <p>Dincy's Cake { new Date().getFullYear().toString() === '2021' ? '2021' : '2021-' + new Date().getFullYear().toString() } ©</p>
-            <p>Desenvolvido por Paulo C.</p>
-          </div>
-         
-          <hr/>
-{/* Coluna com: entre em contato (redes sociais, endereço, telefone e email)
-Coluna com:  Suporte,   faça uma doação,  */}
+          </div><hr/>
+
           <div className='column2'>
             <h4>Entre em contato</h4>
             <div className='areaContatos' >
-              
-                <p>(74)98825-7734</p>
-                <p>Rua Dr Clodoaldo Avelino N°680 Centro</p>
+                <p>(74) 98825-7734</p>
+                <p>Rua Dr Clodoaldo Avelino N° 680 Centro</p>
                 <p>pcesarcosta@outlook.com</p>
-              
               <div className='areaIcones'>
                 <FaInstagramSquare className='iconFooter' />
                 <FaFacebookSquare className='iconFooter'/>
                 <FaWhatsappSquare className='iconFooter' />
-              </div>
-              
+              </div>    
             </div>
-          </div>
-         
-          <hr/>
+          </div><hr/>
           
           <div className='column3'>
-            coluna3
+            <a href='#pagina a ser construida' ><p>Suporte</p></a>
+            <a href='#pagina a ser construida' ><p>Sugestões</p></a>
+            <a href='#pagina a ser construida' ><p>Ajude o projeto</p></a>
+            <p>Desenvolvido por Paulo Costa</p>
           </div>
+
         </footer>
       
     </div>
