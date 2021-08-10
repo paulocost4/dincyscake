@@ -14,7 +14,8 @@ import cake6 from './images/cake6.jpg'
 
 
 import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { useState } from 'react';
 
 function TextoDaSeçao(props){
   return(
@@ -71,6 +72,8 @@ function popUp(){
 }
 
 function App() {
+  let [popUpStatus, setPopUpStatus] = useState(0)
+
   return (
     
     <div className="App">
@@ -81,7 +84,12 @@ function App() {
             <a className='itemNavBar' href="#produtos">Produtos</a>
             {/* <a className='itemNavBar' href="#imagens">Imagens</a> */}
             <a className='itemNavBar' href="#encomendas">Encomendas</a>
-            <button className='itemNavBar' href="" onClick={()=>popUp()}>Sobre<IoIosArrowDown className='arrowSobre'/></button>
+            <button className='itemNavBar' href="" 
+              onClick={()=>{
+                popUpStatus ? setPopUpStatus(0) : setPopUpStatus(1) //Muda o status do popUp
+                popUp() //Abre ou fecha o popUp   //Renderiza a seta para baixo ou para frente
+              }}>Sobre {popUpStatus ? <IoIosArrowDown className='arrowSobre'/> : <IoIosArrowForward className='arrowSobre'/> } 
+            </button>
             <div className='popUpSobre'>
               <a href='a ser criado' ><p>A Dincy's Cake</p></a>
               <a href='a ser criado' ><p>Desenvolvimento do site</p></a>
