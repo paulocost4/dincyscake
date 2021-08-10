@@ -1,7 +1,7 @@
 /* Fonte Logo*/
 @import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
 /* Fonte corpo do site */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200&display=swap');
 
 .App{
   display: flex;
@@ -40,6 +40,10 @@
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bolder;
+}
+
+.itemNavBar:focus{
+  outline: none;
 }
 
 
@@ -157,12 +161,22 @@ body {
     display: none;
   }
 }
-.main h3, .main p{
+.main h3{
   text-align: center;
   color: #000;
   font-family: Montserrat;
+  font-weight: 300;
   font-size: x-large;
 }
+.main p{
+  text-align: center;
+  color: #000;
+  font-family: Montserrat;
+  font-weight: 100;
+  font-size: x-large;
+}
+
+
 .textoSeçao{
   margin: 50px auto
 }
