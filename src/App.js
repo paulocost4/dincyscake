@@ -54,12 +54,21 @@ function popUp(){
   let posiçaoDoSobre = document.querySelector("#root > div > div > nav > button").getBoundingClientRect()
   let popUp = document.querySelector("#root > div > div > nav > div")
   if(popUp.style.display==='none' || popUp.style.display===''){
-    let novaEsquerda = posiçaoDoSobre.left - 63.945 //diminui pela metade da largura do popUp para conseguir centralizar com o SOBRE
-    popUp.style.top = `${posiçaoDoSobre.bottom}px`
     
-    // Entre 955 e 700 e em qualquer valor abaixo de 561 , usar right= 0px 
-    popUp.style.left = `${novaEsquerda}px`
-    popUp.style.display = 'block'
+
+    let {innerWidth} = window
+    console.log('InnerWidth: ', innerWidth)
+    if( (innerWidth < 860 && innerWidth > 700) || innerWidth < 561 ){
+      popUp.style.left = `${innerWidth-220}px`
+      // popUp.style.right = `0px` // Entre 860 e 700 e em qualquer valor abaixo de 561 , usar right= tamanho da tela menos o tamanho do popUp 
+    }
+    else{
+      let novaEsquerda = posiçaoDoSobre.left - 60.795 //diminui pela metade da largura do popUp para conseguir centralizar com o SOBRE
+      popUp.style.top = `${posiçaoDoSobre.bottom}px`
+      popUp.style.left = `${novaEsquerda}px`
+    }
+
+    popUp.style.display = 'block' //Torna o popUp visivel
     console.log('Abre poPup')
   } 
   else{
