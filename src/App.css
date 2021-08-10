@@ -70,6 +70,7 @@ body {
 .itemNavBar:hover{
   color: #fff;
   background-color: #f12a5e;
+  cursor: pointer;
 }
 .tituloLogo{
   margin: 0;
@@ -265,14 +266,23 @@ body {
   top: 60px;
   right: 0px;
   height: auto;
-  width: 200px;
+  width: 220px;
   background-color: snow;
   border-radius: 5px;
   box-shadow: 0 0 5px 0px #282c2f;
   padding: 10px;
+  margin: 0px
 }
 
 .popUpSobre a{
-  color: #000;
   text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #979797;
+  padding: 0px 5px;
+}
+.popUpSobre a:hover{
+  color: #fff;
+  background-color: #f12a5e;
 }

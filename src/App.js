@@ -51,32 +51,40 @@ function Logo(){
 }
 
 function popUp(){
-  let posiçaoDoSobre = document.querySelector("#root > div > div > nav > button").getBoundingClientRect()
+  let botaoSobre = document.querySelector("#root > div > div > nav > button")
+  let posiçaoDoSobre = botaoSobre.getBoundingClientRect()
   let popUp = document.querySelector("#root > div > div > nav > div")
+  
   if(popUp.style.display==='none' || popUp.style.display===''){
     
 
     let {innerWidth} = window
     console.log('InnerWidth: ', innerWidth)
-    if( (innerWidth < 860 && innerWidth > 700) || innerWidth < 561 ){
-      popUp.style.left = `${innerWidth-220}px`
+    if( (innerWidth < 930 && innerWidth > 700) || innerWidth < 400 ){
+      popUp.style.left = `${innerWidth-240}px`
       // popUp.style.right = `0px` // Entre 860 e 700 e em qualquer valor abaixo de 561 , usar right= tamanho da tela menos o tamanho do popUp 
     }
     else{
-      let novaEsquerda = posiçaoDoSobre.left - 60.795 //diminui pela metade da largura do popUp para conseguir centralizar com o SOBRE
+      let novaEsquerda = posiçaoDoSobre.left - ( 240 - posiçaoDoSobre.width )/2  //diminui pela metade da largura do popUp para conseguir centralizar com o SOBRE
       popUp.style.left = `${novaEsquerda}px`
-    }
+    }      
     
     popUp.style.top = `${posiçaoDoSobre.bottom}px`
     popUp.style.display = 'block' //Torna o popUp visivel
     console.log('Abre poPup')
+    //Altera ascores enquanto o popUp estiver aberto
+    botaoSobre.style.color= '#fff'
+    botaoSobre.style.backgroundColor = '#f12a5e'
   } 
   else{
     popUp.style.display = 'none'
     console.log('Fecha popPup')
+
+    botaoSobre.style.color= '#f12a5e'
+    botaoSobre.style.backgroundColor = '#fff'
   }
   console.log("pop up: ", popUp.style.left, popUp.style.right, popUp.style.top)
-  console.log('posiçaoDoSobre: ', posiçaoDoSobre.left, posiçaoDoSobre.right, posiçaoDoSobre.bottom)
+  console.log(posiçaoDoSobre)
 
 }
 
@@ -100,8 +108,8 @@ function App() {
               }}>Sobre {popUpStatus ? <IoIosArrowDown className='arrowSobre'/> : <IoIosArrowForward className='arrowSobre'/> } 
             </button>
             <div className='popUpSobre'>
-              <a href='a ser criado' ><p>A Dincy's Cake</p></a>
-              <a href='a ser criado' ><p>Desenvolvimento do site</p></a>
+              <a href='a ser criado' ><p>A Dincy's Cake</p> <IoIosArrowForward className='arrowSobre' /> </a>
+              <a href='a ser criado' ><p>Desenvolvimento do site</p> <IoIosArrowForward className='arrowSobre' /> </a>
             </div>
           </nav>
         </div>
