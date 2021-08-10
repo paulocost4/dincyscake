@@ -35,8 +35,14 @@
   text-decoration: none;
   color: #f12a5e;
   padding: 16px;
-  font-weight: bold;
+  background-color: transparent;
+  border: 0;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: bolder;
 }
+
+
 .navBar{
   display: flex;
   height: inherit;
@@ -78,7 +84,7 @@ body {
   display: flex;
   height: auto;
   width: 100%;
-  margin: 26px 0px;
+  margin: 26px 0px 100px 0px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -102,6 +108,9 @@ body {
   color: #fff;
   margin: 20px;
   font-weight: bolder;
+  text-align: center;
+  font-family: cursive;
+
 }
 .banner button{
   padding: 10px 20px;
@@ -154,8 +163,7 @@ body {
   font-size: x-large;
 }
 .textoSeçao{
-  margin-top: 45px;
-  margin-bottom: 45px;
+  margin: 50px auto
 }
 
 .footer{
@@ -169,7 +177,7 @@ body {
   display: flex;
   height: 200px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   
   padding: 10px;
@@ -210,6 +218,8 @@ body {
   height: 30px;
   width: 30px;
   color: #000;
+  margin: 0 10px 0 10px;
+  /* f12a5e */
 }
 .areaContatos{
   display: flex;
@@ -245,4 +255,24 @@ body {
     height: 1px;
   }
 }
+.arrowSobre{
+  margin-left: 5px;
+}
 
+.popUpSobre{
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  height: auto;
+  width: 200px;
+  background-color: snow;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0px #282c2f;
+  padding: 10px;
+}
+
+.popUpSobre a{
+  color: #000;
+  text-decoration: none;
+}

@@ -13,7 +13,8 @@ import cake6 from './images/cake6.jpg'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-import { FaInstagramSquare, FaFacebookSquare, FaWhatsappSquare } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
 
 function TextoDaSeçao(props){
   return(
@@ -48,6 +49,27 @@ function Logo(){
   )
 }
 
+function popUp(){
+  let posiçaoDoSobre = document.querySelector("#root > div > div > nav > button").getBoundingClientRect()
+  let popUp = document.querySelector("#root > div > div > nav > div")
+  if(popUp.style.display==='none' || popUp.style.display===''){
+    let novaEsquerda = posiçaoDoSobre.left - 63.945 //diminui pela metade da largura do popUp para conseguir centralizar com o SOBRE
+    popUp.style.top = `${posiçaoDoSobre.bottom}px`
+    
+    // Entre 955 e 700 e em qualquer valor abaixo de 561 , usar right= 0px 
+    popUp.style.left = `${novaEsquerda}px`
+    popUp.style.display = 'block'
+    console.log('Abre poPup')
+  } 
+  else{
+    popUp.style.display = 'none'
+    console.log('Fecha popPup')
+  }
+  console.log("pop up: ", popUp.style.left, popUp.style.right, popUp.style.top)
+  console.log('posiçaoDoSobre: ', posiçaoDoSobre.left, posiçaoDoSobre.right, posiçaoDoSobre.bottom)
+
+}
+
 function App() {
   return (
     
@@ -57,12 +79,16 @@ function App() {
           <nav className='navBar'>
             <a className='itemNavBar' href="#home">Home</a>
             <a className='itemNavBar' href="#produtos">Produtos</a>
-            <a className='itemNavBar' href="#imagens">Imagens</a>
+            {/* <a className='itemNavBar' href="#imagens">Imagens</a> */}
             <a className='itemNavBar' href="#encomendas">Encomendas</a>
-            <a className='itemNavBar' href="#sobre">Sobre</a>
+            <button className='itemNavBar' href="" onClick={()=>popUp()}>Sobre<IoIosArrowDown className='arrowSobre'/></button>
+            <div className='popUpSobre'>
+              <a href='a ser criado' ><p>A Dincy's Cake</p></a>
+              <a href='a ser criado' ><p>Desenvolvimento do site</p></a>
+            </div>
           </nav>
         </div>
-
+        
         <section className='banner' >
           <h1>Venha conhecer os nossos bolos</h1>
           <h3>Tudo com muito carinho para você</h3>
@@ -93,7 +119,7 @@ function App() {
           
           <div className='column1'>
             <Logo/>
-            <p>Apenas uma lojinha de bolo começando a brilhar, ajude-nos nessa jornada</p>
+            <p>"Apenas uma lojinha de bolo começando a brilhar, ajude-nos nessa jornada"</p>
             <p>Dincy's Cake { new Date().getFullYear().toString() === '2021' ? '2021' : '2021-' + new Date().getFullYear().toString() } ©</p>
           </div><hr/>
 
@@ -104,14 +130,18 @@ function App() {
                 <p>Rua Dr Clodoaldo Avelino N° 680 Centro</p>
                 <p>pcesarcosta@outlook.com</p>
               <div className='areaIcones'>
-                <FaInstagramSquare className='iconFooter' />
-                <FaFacebookSquare className='iconFooter'/>
-                <FaWhatsappSquare className='iconFooter' />
+                <a target='_blank' href='https://www.instagram.com/dincyscake/' rel="noreferrer" ><FaInstagram className='iconFooter' /></a>
+                <a target='_blank' href='https://www.facebook.com/profile.php?id=100011493946134' rel="noreferrer" ><FaFacebook className='iconFooter'/></a>
+                <a target='_blank' href='https://api.whatsapp.com/send?phone=+55(74)98825-7734' rel="noreferrer" ><FaWhatsapp className='iconFooter' /></a>
+                
+                
+                
               </div>    
             </div>
           </div><hr/>
           
           <div className='column3'>
+            <h4>Projeto</h4>
             <a href='#pagina a ser construida' ><p>Suporte</p></a>
             <a href='#pagina a ser construida' ><p>Sugestões</p></a>
             <a href='#pagina a ser construida' ><p>Ajude o projeto</p></a>
