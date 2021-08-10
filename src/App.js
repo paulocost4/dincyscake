@@ -64,10 +64,10 @@ function popUp(){
     }
     else{
       let novaEsquerda = posiçaoDoSobre.left - 60.795 //diminui pela metade da largura do popUp para conseguir centralizar com o SOBRE
-      popUp.style.top = `${posiçaoDoSobre.bottom}px`
       popUp.style.left = `${novaEsquerda}px`
     }
-
+    
+    popUp.style.top = `${posiçaoDoSobre.bottom}px`
     popUp.style.display = 'block' //Torna o popUp visivel
     console.log('Abre poPup')
   } 
