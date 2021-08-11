@@ -80,8 +80,8 @@ function popUp(){
     popUp.style.display = 'none'
     console.log('Fecha popPup')
 
-    botaoSobre.style.color= '#f12a5e'
-    botaoSobre.style.backgroundColor = '#fff'
+    botaoSobre.style.color= ''
+    botaoSobre.style.backgroundColor = ''
   }
   console.log("pop up: ", popUp.style.left, popUp.style.right, popUp.style.top)
   console.log(posiçaoDoSobre)
