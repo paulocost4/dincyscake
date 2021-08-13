@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 import donut from '../public/images/donut.png'
@@ -29,7 +30,7 @@ import { useState } from 'react';
 function TextoDaSeçao(props){
   return(
     <section className={styles.textoSeçao}>
-      <h3>{props.titulo}</h3>
+      <h1>{props.titulo}</h1>
       <p>{props.texto}</p>
     </section>
   )
@@ -54,18 +55,20 @@ function Imagens(props){
 function Logo(){
   return(
     <div className={styles.areaLogo}>
-      <a href='#home' style={{textDecoration: 'none', flexDirection: 'row', display: 'flex'}}>
-        <Image objectFit='cover' className={styles.logo} height='50' width='50' quality='100' placeholder='blur' src={donut} alt='Imagem donut'></Image>
-        <h1 className={styles.tituloLogo} >Dincy's Cake</h1>
-      </a>
+      <Link href='/' >
+        <a style={{textDecoration: 'none', flexDirection: 'row', display: 'flex'}}>
+          <Image objectFit='cover' className={styles.logo} height='50' width='50' quality='100' placeholder='blur' src={donut} alt='Imagem donut'></Image>
+          <h1 className={styles.tituloLogo} >Dincy's Cake</h1>
+        </a>
+      </Link>
     </div> 
   )
 }
 
 function popUp(){
-  let botaoSobre = document.querySelector("#__next > div > div > nav > button")
+  let botaoSobre = document.getElementsByClassName(styles.itemNavBar)[3]
+  let popUp = document.getElementsByClassName(styles.popUpSobre)[0]
   let posiçaoDoSobre = botaoSobre.getBoundingClientRect()
-  let popUp = document.querySelector("#__next > div > div > nav > div")
   
   if(popUp.style.display==='none' || popUp.style.display===''){
     
@@ -103,6 +106,7 @@ function popUp(){
 
 export default function Home(){
   let [popUpStatus, setPopUpStatus] = useState(0)
+  
 
   return (
     
@@ -110,19 +114,32 @@ export default function Home(){
         <div className={styles.areaNavBar}>
           <Logo/> 
           <nav className={styles.navBar}>
-            <a className={styles.itemNavBar} href="#home">Home</a>
-            <a className={styles.itemNavBar} href="#produtos">Produtos</a>
-            {/* <a className={styles.itemNavBar} href="#imagens">Imagens</a> */}
-            <a className={styles.itemNavBar} href="#encomendas">Encomendas</a>
+            <Link  href="/"><a className={styles.itemNavBar} >Home</a></Link>
+            <Link href="/produtos"><a className={styles.itemNavBar} >Produtos</a></Link>
+            {/* <Link href="/imagens"><a className={styles.itemNavBar} >Imagens</a></Link> */}
+            <Link href="/encomendas"><a className={styles.itemNavBar} >Encomendas</a></Link>
             <button className={styles.itemNavBar} href="" 
               onClick={()=>{
                 popUpStatus ? setPopUpStatus(0) : setPopUpStatus(1) //Muda o status do popUp
                 popUp() //Abre ou fecha o popUp   //Renderiza a seta para baixo ou para frente
               }}>Sobre {popUpStatus ? <IoIosArrowDown className={styles.arrowSobre}/> : <IoIosArrowForward className={styles.arrowSobre}/> } 
             </button>
+
+            {/***********     POPUP     ***********/}
+
             <div className={styles.popUpSobre}>
-              <a href='a ser criado' ><p>A Dincy's Cake</p> <IoIosArrowForward className={styles.arrowSobre} /> </a>
-              <a href='a ser criado' ><p>Desenvolvimento do site</p> <IoIosArrowForward className={styles.arrowSobre} /> </a>
+              <Link passHref href='/sobre/dincy' >
+                <a>
+                  <p>A Dincy's Cake</p> 
+                  <IoIosArrowForward className={styles.arrowSobre}/>
+                </a>
+              </Link>
+              <Link passHref href='/sobre/desenvolvimento' >
+                <a>
+                  <p>Desenvolvimento do site</p>
+                  <IoIosArrowForward className={styles.arrowSobre}/>
+                </a>
+              </Link>
             </div>
           </nav>
         </div>
