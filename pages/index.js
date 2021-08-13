@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -36,8 +37,8 @@ function Imagens(props){
     <div className={styles.images}>
       {props.src.map((value, key)=>{
         return(
-          <div className={styles[props.tipo[key]]}>
-            <Image layout='fill' key={`${value}${key}`}  src={value} ></Image>
+          <div key={`div${value}${key}`} className={styles[props.tipo[key]]}>
+            <Image layout='fill' key={`Image${value}${key}`} alt={`Imagem bolo: ${value}`} src={value} ></Image>
           </div>
         )
       })}
