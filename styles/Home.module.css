@@ -132,12 +132,16 @@
 .images > div{    /* Elemento pai da <Image/> do nextjs */
   display: flex;
   background-size: cover;
-  height: 350px;
+  height: 500px;
   margin: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 3px 0px;
+  /* box-shadow: 0 0 10px 0px; */
   position: relative;
-
+}
+.images *{    /* Elemento pai da <Image/> do nextjs */
+  border-radius: 10px;
+  box-shadow: 0 0 5px px;
+  background-color: #c1c1c1;
 }
 .small{
   flex-basis: 40%;
