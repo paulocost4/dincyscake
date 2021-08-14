@@ -26,6 +26,17 @@ a {
 }
 
 
+main{
+  display: flex;
+  height: auto;
+  width: 100%;
+  margin: 26px 0px 100px 0px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 #__next, #__next > div{
   display: flex;
   height: 100%;

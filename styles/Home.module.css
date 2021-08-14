@@ -2,19 +2,6 @@
 
 
 
-
-.main{
-  display: flex;
-  height: auto;
-  width: 100%;
-  margin: 26px 0px 100px 0px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
 .banner{
   display: flex;
   flex-direction: column;
@@ -106,14 +93,4 @@
 .textoSeçao{
   margin: 50px auto
 }
-
-
-
-
-
-
-
-
-
-
 

@@ -1,0 +1,8 @@
+.BannerHorizontal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c1c1c1;
+    height: 200px;
+    width: auto;
+}
