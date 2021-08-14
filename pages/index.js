@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
@@ -24,7 +24,7 @@ import cakeAndCupcake from '../public/images/bolo e cupcake.jpg'
 
 
 import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward } from "react-icons/io";
 import { useState } from 'react';
 
 function TextoDaSeçao(props){
@@ -106,7 +106,15 @@ function popUp(){
 
 export default function Home(){
   let [popUpStatus, setPopUpStatus] = useState(0)
-  
+
+  useEffect(()=>{
+    addEventListener('scroll', (event)=>{
+      console.log('Eveno disparado: ', event.type)
+      let botaoSubir = document.getElementsByClassName(styles.botaoSubir)[0]
+      botaoSubir.classList.add(styles.botaoSubirAtivo)
+    })
+    removeEventListener('scroll', null)
+  }, [])
 
   return (
     
@@ -169,7 +177,9 @@ export default function Home(){
             
 
         </main>
-
+                    {/* Botão para ir para o topo da pagina */}
+        <button className={styles.botaoSubir}><IoIosArrowUp size='25' color='#fff'  /></button>
+        
         <footer className={styles.footer}>
           
           <div className={styles.column1}>

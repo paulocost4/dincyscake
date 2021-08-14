@@ -300,3 +300,23 @@
   color: #fff;
   background-color: #f12a5e;
 }
+
+.botaoSubir{
+  display: none;
+  /* bottom: 0;
+  right: 0; */
+  background-color: #f12a5e;
+  border-radius: 360px;
+}
+.botaoSubirAtivo{
+  display: block;
+  position: fixed;
+  bottom: 5%;
+  right: 1%;
+  /* background-color: #f12a5e;
+  border-radius: 360px; */
+  opacity: 0.8;
+}
+.botaoSubirAtivo:active{
+  opacity: 1;
+}
