@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Dincy's Cake{}</title> 
         <script data-ad-client="ca-pub-1969421957779330" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1969421957779330"crossOrigin="anonymous"></script> */}
       </Head>
       <Component {...pageProps} />
     </div>
