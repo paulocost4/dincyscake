@@ -34,8 +34,8 @@ main{
   width: 100%;
   margin: 26px 0px 100px 0px;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   min-height: 800px;
 }
 

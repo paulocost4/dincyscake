@@ -31,48 +31,11 @@
   color: grey;
 }
 
-.images{
-  display: flex;
-  flex-wrap: wrap;
-  /* flex-direction: row; */
-  list-style-type: none;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  padding: 0px;
-
-}
-.images > div{    /* Elemento pai da <Image/> do nextjs */
-  display: flex;
-  background-size: cover;
+.imagem{
   height: 500px;
-  margin: 10px;
-  border-radius: 10px;
-  /* box-shadow: 0 0 10px 0px; */
-  position: relative;
 }
-.images *{    /* Elemento pai da <Image/> do nextjs */
-  border-radius: 10px;
-  box-shadow: 0 0 5px px;
-  background-color: #c1c1c1;
-}
-.small{
-  flex-basis: 40%;
-}
-.medium{
-  flex-basis: 55%;
-}
-.large{
-  flex-basis: 96.5%;
-}
-@media screen and (max-width: 800px){
-  .images *{
-    flex-basis: 100%;
-  }
-  .images .small{
-    display: none;
-  }
-}
+
+
 .main h1{
   text-align: center;
   color: #000;
@@ -91,6 +54,6 @@
 
 
 .textoSeçao{
-  margin: 50px auto
+  margin: 50px 10px
 }
 

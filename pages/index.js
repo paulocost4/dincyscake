@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect } from 'react'
-import Image from 'next/image'
+import Imagens from './src/components/Imagens'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Navbar from './src/components/navbar'
@@ -37,21 +37,7 @@ function TextoDaSeçao(props){
   )
 }
 
-//  ex: <Imagens src={[cake1, cake2]} tipo={['small', 'medium']} />
 
-function Imagens(props){
-  return(
-    <div className={styles.images}>
-      {props.src.map((value, key)=>{
-        return(
-          <div key={`div${value}${key}`} className={styles[props.tipo[key]]}>
-            <Image quality='100' placeholder='blur' className='imgItem' objectFit='cover' layout='fill' key={`Image${value}${key}`} alt={`Imagem bolo: ${value}`} src={value} ></Image>
-          </div>
-        )
-      })}
-    </div>
-  )
-}
 
 
 
@@ -83,13 +69,19 @@ export default function Home(){
               
 
           <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
-          <Imagens src={[cake1, cakeAndCupcake]} tipo={['small', 'medium']} />
+          <div className={styles.imagem}>
+            <Imagens src={[cake1, cakeAndCupcake]} tipo={['small', 'medium']} />
+          </div>
           
           <TextoDaSeçao  texto='Se nada der certo, tente um saboroso pedaço de bolo com cobertura!' />
-          <Imagens src={[blueCake, pinkCakeCenter]} tipo={['medium', 'small']} />
+          <div className={styles.imagem}>
+            <Imagens src={[blueCake, pinkCakeCenter]} tipo={['medium', 'small']} />
+          </div>
 
           <TextoDaSeçao  texto='E para os apaixonados por receitas com maracujá, apresento-lhes a felicidade' />
-          <Imagens src={[cake5, cake6]} tipo={['small', 'medium']} />
+          <div className={styles.imagem}>
+            <Imagens src={[cake5, cake6]} tipo={['small', 'medium']} />
+          </div>
 
             
             
