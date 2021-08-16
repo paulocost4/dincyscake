@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './Logo.module.css'
 
-import donut from '../../../../public/images/donut.png'
+import donut from '../../../public/images/donut.png'
 
 export default function Logo(){
     return(
