@@ -15,7 +15,7 @@ function RenderizarProduto({imagem, titulo, valor}){
     return(
         <div className={styles.produtos}>
             <div className={styles.imagem} >
-                <Imagens src={[imagem]} />
+                <Imagens src={[imagem]} tipo={['full']} />
             </div>
             <div className={styles.infomarçoes} >
                 <h1 className={styles.titulo} >{titulo}</h1>

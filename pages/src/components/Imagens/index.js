@@ -4,7 +4,6 @@ import Image from 'next/image'
 import styles from './Imagens.module.css'
 
 function Imagens(props){
-    props.tipo === undefined ? props.tipo = styles.full : null
     return(
       <div className={styles.images}>
         {props.src.map((value, key)=>{
