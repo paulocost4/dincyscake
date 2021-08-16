@@ -35,6 +35,9 @@
   .large{
     flex-basis: 96.5%;
   }
+  .full{
+    flex-basis: 100%
+  }
   
 
   @media screen and (max-width: 800px){
