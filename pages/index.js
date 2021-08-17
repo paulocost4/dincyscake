@@ -24,6 +24,17 @@ import cakeAndCupcake from '../public/images/bolo e cupcake.jpg'
 // import FontAwesome from 'react-fontawesome';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import {storage}  from '../src/firebase'
+
+
+export async function getStaticProps(context) {
+
+  let storageRef = storage.ref('/imagens')
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+
 
 
 import { useState } from 'react';
