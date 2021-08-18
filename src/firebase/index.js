@@ -27,10 +27,23 @@ if(!firebase.apps.length){  // previni duplicação
     
 }
 
+async function pegarImagem( storageRef ){
+    // console.log( await storageRef.listAll())
+    let url = await storageRef.getDownloadURL().then(url => url) // Retorna a url caso tudo dê certo
+    .catch(err=>{
+        console.log(err)
+        return 'erro'       // Retorna 'erro' caso alguma coisa dê errado
+    })
+    return url
+}
 
 
+const storage = firebase.storage()
 
+module.exports = {
+    storage: storage,
+    pegarImagem: (ref) => pegarImagem(ref) 
+}
 
-export const storage = firebase.storage()
 
 

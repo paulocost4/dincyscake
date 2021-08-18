@@ -8,42 +8,21 @@ import GoogleAds from '../../src/components/GoogleAds'
 import BotaoSubir from '../../src/components/botaoSubir'
 import Head from 'next/dist/shared/lib/head'
 import {FaShoppingCart} from   'react-icons/fa'
-import imagem from '../../public/logo512.png'
-
-// const fs = require('fs')
-const imgRef = '../../public/images/cake1.jpg'
 import {storage} from '../../src/firebase'
-// import api from '../../src/services/api' 
+
+const firebase = require('../../src/firebase/')
 
 export async function getStaticProps(context) {
     console.log('********* PRODUTOS *********')
-    let storageRef = storage.ref('/imagens/cake1.jpg')
+    let storageRef = firebase.storage.ref('/imagens/cake1.jpg')
+    // let storageRef = firebase.storage.ref('/imagens')
     let listImgs = []
     //Download firebase storage
-    listImgs.push(
-        await storageRef.getDownloadURL().then(url => url)
-        .catch(err=>{
-            console.log(err)
-            return 'erro'
-        }) 
-    )
+    
+    listImgs.push( await firebase.pegarImagem( storageRef ) ) 
+    
     console.log(listImgs)  
 
-
-    // Uploud firebase storage
-    // let imagemBuffer = fs.readFileSync( '/home/paulo/Documentos/CodicosReactJs/dincyscake/public/logo512.png' , (err, data)=>{
-    //     if(!err){
-    //         return data.buffer
-    //     }
-    // })
-    // storageRef.put(imagemBuffer).then(snapshot=>{
-    //     console.log('Firebase image put ', snapshot.state)
-    // }).catch((err=>{
-    //     console.log(err)
-    // }))
-
-    // console.log( imagemBuffer )
-    // console.log(imgBlob)
     return {
       props: {
           listImgs: listImgs
@@ -51,18 +30,6 @@ export async function getStaticProps(context) {
     }
 }
 
-
-// export async function getStaticProps(context) {
-
-//     let storageRef = storage.ref('/imagens')
-//     let img = storageRef.child('teste.png')
-//     img.put(File(imagem)).then((snapshot)=>{
-//         console.log(`img put file (${imagem})`, snapshot)
-//     })
-//     return {
-//       props: {}, // will be passed to the page component as props
-//     }
-// }
 
 function RenderizarProduto({imagem, titulo, valor}){
     return(

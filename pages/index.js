@@ -27,14 +27,14 @@ import cakeAndCupcake from '../public/images/bolo e cupcake.jpg'
 import {storage}  from '../src/firebase'
 
 
-export async function getStaticProps(context) {
+// export async function getStaticProps(context) {
   
-  let storageRef = storage.ref('')
-  console.log( await storageRef.listAll())
-  return {
-    props: {}, // will be passed to the page component as props
-  }
-}
+//   let storageRef = storage.ref()
+//   console.log( await storageRef.listAll())
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   }
+// }
 
 
 
