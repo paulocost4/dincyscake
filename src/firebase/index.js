@@ -20,7 +20,7 @@ export const firebaseConfig = {
     measurementId: measurementIdapiKeyFirebase,
 };
 
-console.log('App firebase starting: ')
+console.log('App firebase starting: ', firebase.apps.length)
 if(!firebase.apps.length){  // previni duplicação
     firebase.initializeApp(firebaseConfig);
     console.log('App firebase start: ', firebase.apps.length)

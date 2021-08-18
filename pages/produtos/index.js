@@ -8,8 +8,61 @@ import GoogleAds from '../../src/components/GoogleAds'
 import BotaoSubir from '../../src/components/botaoSubir'
 import Head from 'next/dist/shared/lib/head'
 import {FaShoppingCart} from   'react-icons/fa'
-import cake1 from '../../public/images/cake1.jpg'
-import { render } from '@testing-library/react'
+import imagem from '../../public/logo512.png'
+
+// const fs = require('fs')
+const imgRef = '../../public/images/cake1.jpg'
+import {storage} from '../../src/firebase'
+// import api from '../../src/services/api' 
+
+export async function getStaticProps(context) {
+    console.log('********* PRODUTOS *********')
+    let storageRef = storage.ref('/imagens/cake1.jpg')
+    let listImgs = []
+    //Download firebase storage
+    listImgs.push(
+        await storageRef.getDownloadURL().then(url => url)
+        .catch(err=>{
+            console.log(err)
+            return 'erro'
+        }) 
+    )
+    console.log(listImgs)  
+
+
+    // Uploud firebase storage
+    // let imagemBuffer = fs.readFileSync( '/home/paulo/Documentos/CodicosReactJs/dincyscake/public/logo512.png' , (err, data)=>{
+    //     if(!err){
+    //         return data.buffer
+    //     }
+    // })
+    // storageRef.put(imagemBuffer).then(snapshot=>{
+    //     console.log('Firebase image put ', snapshot.state)
+    // }).catch((err=>{
+    //     console.log(err)
+    // }))
+
+    // console.log( imagemBuffer )
+    // console.log(imgBlob)
+    return {
+      props: {
+          listImgs: listImgs
+      }, // will be passed to the page component as props
+    }
+}
+
+
+// export async function getStaticProps(context) {
+
+//     let storageRef = storage.ref('/imagens')
+//     let img = storageRef.child('teste.png')
+//     img.put(File(imagem)).then((snapshot)=>{
+//         console.log(`img put file (${imagem})`, snapshot)
+//     })
+//     return {
+//       props: {}, // will be passed to the page component as props
+//     }
+// }
 
 function RenderizarProduto({imagem, titulo, valor}){
     return(
@@ -29,20 +82,20 @@ function RenderizarProduto({imagem, titulo, valor}){
     )   
 }
 
-function Categorias({titulo}){
+function Categorias({titulo, listImgs}){
     return(
         <section className={styles.section} >
             <h1 className={styles.titulo}>{titulo}</h1>
             <section className={styles.areaProdutos} >
-                <RenderizarProduto imagem={cake1} titulo='Bolo Caseirinho' valor='R$30,00' />
-                <RenderizarProduto imagem={cake1} titulo='Bolo Caseirinho' valor='R$30,00' />                        
-                <RenderizarProduto imagem={cake1} titulo='Bolo Caseirinho' valor='R$30,00' />
+                <RenderizarProduto imagem={ listImgs[0] } titulo='Bolo Caseirinho' valor='R$30,00' />
+                <RenderizarProduto imagem={ listImgs[0] } titulo='Bolo Caseirinho' valor='R$30,00' />                        
+                <RenderizarProduto imagem={ listImgs[0] } titulo='Bolo Caseirinho' valor='R$30,00' />
             </section>
         </section>
     )
 }
 
-function produtos(){
+function produtos({listImgs}){
     
     return(
         <div>
@@ -61,8 +114,8 @@ function produtos(){
             <main>
                 <section className={styles.section} >
 
-                   <Categorias titulo='Fatias Disponiveis' />
-                   <Categorias titulo='Bolos para encomendar' />
+                   <Categorias listImgs={listImgs} titulo='Fatias Disponiveis' />
+                   <Categorias listImgs={listImgs} titulo='Bolos para encomendar' />
 
 
 

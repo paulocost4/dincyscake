@@ -28,8 +28,9 @@ import {storage}  from '../src/firebase'
 
 
 export async function getStaticProps(context) {
-
-  let storageRef = storage.ref('/imagens')
+  
+  let storageRef = storage.ref('')
+  console.log( await storageRef.listAll())
   return {
     props: {}, // will be passed to the page component as props
   }

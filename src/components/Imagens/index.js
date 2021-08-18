@@ -9,7 +9,7 @@ function Imagens(props){
         {props.src.map((value, key)=>{
           return(
             <div key={`div${value}${key}`} className={styles[props.tipo[key]]}>
-              <Image quality='100' placeholder='blur' className='imgItem' objectFit='cover' layout='fill' key={`Image${value}${key}`} alt={`Imagem bolo: ${value}`} src={value} ></Image>
+              <Image quality='100' placeholder='blur' className='imgItem' objectFit='cover' layout='fill' key={`Image${value}${key}`} alt={`Imagem bolo: ${value}`} src={value} blurDataURL={value} ></Image>
             </div>
           )
         })}
