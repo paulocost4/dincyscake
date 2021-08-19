@@ -8,18 +8,17 @@ import GoogleAds from '../../src/components/GoogleAds'
 import BotaoSubir from '../../src/components/botaoSubir'
 import Head from 'next/dist/shared/lib/head'
 import {FaShoppingCart} from   'react-icons/fa'
-import {storage} from '../../src/firebase'
 
-const firebase = require('../../src/firebase/')
+const {storage, pegarImagem} = require('../../src/firebase')
+import { firebase } from '../../src/firebase'
+
 
 export async function getStaticProps(context) {
     console.log('********* PRODUTOS *********')
-    let storageRef = firebase.storage.ref('/imagens/cake1.jpg')
-    // let storageRef = firebase.storage.ref('/imagens')
+    let storageRef = storage.ref('/imagens/cake1.jpg')    
     let listImgs = []
-    //Download firebase storage
-    
-    listImgs.push( await firebase.pegarImagem( storageRef ) ) 
+ 
+    listImgs.push( await pegarImagem( storageRef ) ) 
     
     console.log(listImgs)  
 

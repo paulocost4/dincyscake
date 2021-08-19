@@ -8,13 +8,20 @@
   justify-content: center;
   align-items: center;
   background-size: cover;
-  background-image: url(../public/images/banner.jpg);
+  /* background-image: url('https://firebasestorage.googleapis.com/v0/b/dincy-s-cake.appspot.com/o/imagens%2Fbanner.jpg?alt=media&token=5160c97b-b822-49c4-8584-f0a05d3cffd3') ; */
   background-position: center;
   text-transform: uppercase;
   text-align: center;
-  padding: 100px 0px ;
+  /* padding: 100px 0px ; */
+  width: 100%;
+  height: 400px;
 }
-.banner h1, .banner h3, .banner h4{
+.banner > .txtBanner{
+  width: 100%;
+  position: absolute;
+}
+.banner > .txtBanner > *{
+  
   color: #fff;
   margin: 20px;
   font-weight: bolder;

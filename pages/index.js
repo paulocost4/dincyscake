@@ -24,17 +24,27 @@ import cakeAndCupcake from '../public/images/bolo e cupcake.jpg'
 // import FontAwesome from 'react-fontawesome';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import {storage}  from '../src/firebase'
+const {storage, pegarImagem} = require('../src/firebase')
+import { firebase } from '../src/firebase'
 
 
-// export async function getStaticProps(context) {
+
+export async function getStaticProps(context) {
+ 
+
   
-//   let storageRef = storage.ref()
-//   console.log( await storageRef.listAll())
-//   return {
-//     props: {}, // will be passed to the page component as props
-//   }
-// }
+  let storageRef = storage.ref( '/imagens' )
+  let bannerImg = storageRef.child('/banner.jpg') 
+  let bannerUrl = await pegarImagem( bannerImg )
+
+  
+
+  return {
+    props: {
+      bannerUrl: bannerUrl
+    }, // will be passed to the page component as props
+  }
+}
 
 
 
@@ -57,9 +67,14 @@ function TextoDaSeçao(props){
 
 
 
-export default function Home(){
+export default function Home( props ){
+  console.log('styles', styles)
+  useEffect(()=>{
+    // seta o background image de acordo com a imagem recebida do firebase
+    // let banner = document.querySelector( `.${styles.banner}` )
+    // banner.style.backgroundImage = `url("${props.bannerUrl}")`
 
- 
+  }, [props.bannerUrl])
 
   
 
@@ -69,9 +84,15 @@ export default function Home(){
       
         <Navbar/>
         
+        {/* transformar essea section > .banner em uma Image do nextjs */}
+        {/* As imagens estão demorando demais para baixar sem a otimização do */}
+
         <section className={styles.banner} >
-          <h1>Venha conhecer os nossos bolos</h1>
-          <h3>Tudo com muito carinho para você</h3>
+          <Imagens width={1300} height={400} src={[props.bannerUrl]} tipo={['full']} className={styles.imgbanner}/>
+          <div className={styles.txtBanner}>
+            <h1>Venha conhecer os nossos bolos</h1>
+            <h3>Tudo com muito carinho para você</h3>
+          </div>
           {/* <button href='#produtos'>SAIBA MAIS</button> */}
         </section>
         
