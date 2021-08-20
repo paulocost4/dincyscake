@@ -27,12 +27,15 @@
   
   /* Essas classes são apenas para quando for exibir imagens em coluna */
   .small{   /* usar a classe small apenas quando tiver duas ou mais imagens no componente */
+    margin: 10px;
     flex-basis: 40%;
   }
   .medium{
+    margin: 10px;
     flex-basis: 55%;
   }
   .large{
+    margin: 10px;
     flex-basis: 96.5%;
   }
   .full{

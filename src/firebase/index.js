@@ -1,14 +1,14 @@
 import firebase from 'firebase';
 
-const {
-    apiKeyFirebase, 
-    authDomainapiKeyFirebase, 
-    projectIdapiKeyFirebase, 
-    storageBucketapiKeyFirebase, 
-    messagingSenderIdapiKeyFirebase, 
-    appIdapiKeyFirebase, 
-    measurementIdapiKeyFirebase, 
-} = process.env;
+
+const apiKeyFirebase = process.env.apiKeyFirebase
+const authDomainapiKeyFirebase = process.env.authDomainapiKeyFirebase
+const projectIdapiKeyFirebase = process.env.projectIdapiKeyFirebase
+const storageBucketapiKeyFirebase = process.env.storageBucketapiKeyFirebase
+const messagingSenderIdapiKeyFirebase = process.env.messagingSenderIdapiKeyFirebase
+const appIdapiKeyFirebase = process.env.appIdapiKeyFirebase
+const measurementIdapiKeyFirebase = process.env.measurementIdapiKeyFirebase
+
 
 export const firebaseConfig = {
     apiKey: apiKeyFirebase,

@@ -38,5 +38,4 @@ yarn-error.log*
 .vscode
 
 # Api provisoria que eu não sei se usarei
-.src.services
 src/services/api.js
