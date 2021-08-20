@@ -98,17 +98,17 @@ export default function Home( props ){
           <Imagens priority={true} width={1300} height={400} src={[props.bannerUrl]} tipo={['full']} className={styles.imgbanner}/>
           <div className={styles.txtBanner}>
             <h1>Venha conhecer os nossos bolos</h1>
-            <h3>Tudo com muito carinho para você</h3>
+            <h2>Tudo com muito carinho para você</h2>
           </div>
           {/* <button href='#produtos'>SAIBA MAIS</button> */}
         </section>
         
         <main className={styles.main}>
           
-            
+       
               
 
-          <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
+          {/* <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
           <div className={styles.imagem}>
             <Imagens src={[cake1, cakeAndCupcake]} tipo={['small', 'medium']} />
           </div>
@@ -121,7 +121,7 @@ export default function Home( props ){
           <TextoDaSeçao  texto='E para os apaixonados por receitas com maracujá, apresento-lhes a felicidade' />
           <div className={styles.imagem}>
             <Imagens src={[cake5, cake6]} tipo={['small', 'medium']} />
-          </div>
+          </div> */}
 
             
             
@@ -137,38 +137,40 @@ export default function Home( props ){
     </div>
   );
 
-  let home = {  // Estruturar os dados no firebase realtime dessa forma
-    card: {     // Objeto com todos os card que serão exibidos na pagina Home
-      0: {
-        title: '',
-        txt: '',
-        images: []  // vetor com as imagens a serem utilizadas logo abaixo de cada texto  
-      }
-    }
-  }
+  // estrutura do banco de dados
 
-  let produtos = {  // Estruturar os dados no firebase realtime dessa forma
-    card: {     // Vetor com todos os card que serão exibidos na pagina Home
-      0: {
-        title: '',    // titulo referente ao card ex: Fatias Disponiveis, Bolos com Cobertura, Cupcakes, 
-        item: [0]     // Vetor com os itens associados ao card
-      }
-    },
-    item: {   //Vetor contendo os itens diretamente relacionado com o titulo do card
-      0 : {
-        //card: 0,    //referencia do card pertencente
-        name: '', // nome do item
-        info: [     // vetor contendo o preço e seu tamanho relacionada (caso exista varios tipos)
-          { 
-            text: '', //Descrição do item
-            price: '',
-            size: '' // pequeno, medio, grande, unidade, 125g...
-          }
-        ],
-        imagem: ''  // imagem a ser utilizada para descrever o item 
-      }
-    }
-  }
+  // let home = {  // Estruturar os dados no firebase realtime dessa forma
+  //   card: {     // Objeto com todos os card que serão exibidos na pagina Home
+  //     0: {
+  //       title: '',
+  //       txt: '',
+  //       images: []  // vetor com as imagens a serem utilizadas logo abaixo de cada texto  
+  //     }
+  //   }
+  // }
+
+  // let produtos = {  // Estruturar os dados no firebase realtime dessa forma
+  //   card: {     // Vetor com todos os card que serão exibidos na pagina Home
+  //     0: {
+  //       title: '',    // titulo referente ao card ex: Fatias Disponiveis, Bolos com Cobertura, Cupcakes, 
+  //       item: [0]     // Vetor com os itens associados ao card
+  //     }
+  //   },
+  //   item: {   //Vetor contendo os itens diretamente relacionado com o titulo do card
+  //     0 : {
+  //       //card: 0,    //referencia do card pertencente
+  //       name: '', // nome do item
+  //       info: [     // vetor contendo o preço e seu tamanho relacionada (caso exista varios tipos)
+  //         { 
+  //           text: '', //Descrição do item
+  //           price: '',
+  //           size: '' // pequeno, medio, grande, unidade, 125g...
+  //         }
+  //       ],
+  //       imagem: ''  // imagem a ser utilizada para descrever o item 
+  //     }
+  //   }
+  // }
 
 }
 
