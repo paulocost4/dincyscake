@@ -108,7 +108,7 @@ export default function Home( props ){
        
               
 
-          {/* <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
+          <TextoDaSeçao titulo='Os nossos bolos' texto='Bolos e cupkakes que agradam ao seu paladar, simplesmente uma explosão de cores e sabor. Além do mais, não tem mal nenhum que um bolo quentinho não ajude a curar.' />
           <div className={styles.imagem}>
             <Imagens src={[cake1, cakeAndCupcake]} tipo={['small', 'medium']} />
           </div>
@@ -121,7 +121,7 @@ export default function Home( props ){
           <TextoDaSeçao  texto='E para os apaixonados por receitas com maracujá, apresento-lhes a felicidade' />
           <div className={styles.imagem}>
             <Imagens src={[cake5, cake6]} tipo={['small', 'medium']} />
-          </div> */}
+          </div>
 
             
             
