@@ -36,3 +36,6 @@ yarn-error.log*
 
 # vscode config
 .vscode
+
+# Api provisoria que eu não sei se usarei
+.src.services

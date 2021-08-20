@@ -2,13 +2,14 @@
 import Logo from "../logo"
 import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 import styles from './Footer.module.css'
+import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 
-export default function footer(){
+export default function footer(props){
     return(
         <footer className={styles.footer}>
                   
         <div className={styles.column1}>
-          <Logo/>
+          <Logo logoUrl={props.logoUrl}/>
           <p>"Apenas uma lojinha de bolo começando a brilhar, ajude-nos nessa jornada"</p>
           <p>Dincy's Cake { new Date().getFullYear().toString() === '2021' ? '2021' : '2021-' + new Date().getFullYear().toString() } ©</p>
         </div><hr/>

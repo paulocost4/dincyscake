@@ -32,23 +32,28 @@ import { firebase } from '../src/firebase'
 export async function getStaticProps(context) {
  
 
-  
   let storageRef = storage.ref( '/imagens' )
+  
+  // BANNER  
   let bannerImg = storageRef.child('/banner.jpg') 
   let bannerUrl = await pegarImagem( bannerImg )
 
+  // LOGO  
+  let logoref = storageRef.child('/donut.png') 
+  let logoUrl = await pegarImagem( logoref )
   
 
   return {
     props: {
-      bannerUrl: bannerUrl
+      bannerUrl: bannerUrl,
+      logoUrl: logoUrl
     }, // will be passed to the page component as props
   }
 }
 
 
 
-import { useState } from 'react';
+
 
 function TextoDaSeçao(props){
   return(
@@ -68,7 +73,7 @@ function TextoDaSeçao(props){
 
 
 export default function Home( props ){
-  console.log('styles', styles)
+
   useEffect(()=>{
     // seta o background image de acordo com a imagem recebida do firebase
     // let banner = document.querySelector( `.${styles.banner}` )
@@ -82,13 +87,15 @@ export default function Home( props ){
     
     <div className={styles.App}>
       
-        <Navbar/>
+
+        <Navbar logoUrl={props.logoUrl}/>
         
         {/* transformar essea section > .banner em uma Image do nextjs */}
         {/* As imagens estão demorando demais para baixar sem a otimização do */}
-
+        
+        {/* BANNER */}
         <section className={styles.banner} >
-          <Imagens width={1300} height={400} src={[props.bannerUrl]} tipo={['full']} className={styles.imgbanner}/>
+          <Imagens priority={true} width={1300} height={400} src={[props.bannerUrl]} tipo={['full']} className={styles.imgbanner}/>
           <div className={styles.txtBanner}>
             <h1>Venha conhecer os nossos bolos</h1>
             <h3>Tudo com muito carinho para você</h3>
@@ -124,11 +131,45 @@ export default function Home( props ){
                     {/* Botão para ir para o topo da pagina */}
         <BotaoSubir />
         
-        <Footer/>
+        <Footer logoUrl={props.logoUrl} />
        
       
     </div>
   );
+
+  let home = {  // Estruturar os dados no firebase realtime dessa forma
+    card: {     // Objeto com todos os card que serão exibidos na pagina Home
+      0: {
+        title: '',
+        txt: '',
+        images: []  // vetor com as imagens a serem utilizadas logo abaixo de cada texto  
+      }
+    }
+  }
+
+  let produtos = {  // Estruturar os dados no firebase realtime dessa forma
+    card: {     // Vetor com todos os card que serão exibidos na pagina Home
+      0: {
+        title: '',    // titulo referente ao card ex: Fatias Disponiveis, Bolos com Cobertura, Cupcakes, 
+        item: [0]     // Vetor com os itens associados ao card
+      }
+    },
+    item: {   //Vetor contendo os itens diretamente relacionado com o titulo do card
+      0 : {
+        //card: 0,    //referencia do card pertencente
+        name: '', // nome do item
+        info: [     // vetor contendo o preço e seu tamanho relacionada (caso exista varios tipos)
+          { 
+            text: '', //Descrição do item
+            price: '',
+            size: '' // pequeno, medio, grande, unidade, 125g...
+          }
+        ],
+        imagem: ''  // imagem a ser utilizada para descrever o item 
+      }
+    }
+  }
+
 }
 
 

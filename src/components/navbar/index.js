@@ -2,7 +2,7 @@
 import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward } from "react-icons/io";
 import Link from 'next/link'
 import Logo from '../logo'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Navbar.module.css'
 
 
@@ -47,9 +47,12 @@ function popUp(){
 
 export default function Navbar (props){
     let [popUpStatus, setPopUpStatus] = useState(0)
+
+    
+
     return(
       <div className={styles.areaNavBar}>
-      <Logo/> 
+      <Logo logoUrl={props.logoUrl} /> 
       <nav className={styles.navBar}>
         <Link  href="/"><a className={styles.itemNavBar} >Home</a></Link>
         <Link href="/produtos"><a className={styles.itemNavBar} >Produtos</a></Link>
