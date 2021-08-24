@@ -1,30 +1,37 @@
 import firebase from 'firebase';
+import  'firebase/storage'
+import  'firebase/database'
 
-
-const apiKeyFirebase = process.env.apiKeyFirebase
-const authDomainapiKeyFirebase = process.env.authDomainapiKeyFirebase
-const projectIdapiKeyFirebase = process.env.projectIdapiKeyFirebase
-const storageBucketapiKeyFirebase = process.env.storageBucketapiKeyFirebase
-const messagingSenderIdapiKeyFirebase = process.env.messagingSenderIdapiKeyFirebase
-const appIdapiKeyFirebase = process.env.appIdapiKeyFirebase
-const measurementIdapiKeyFirebase = process.env.measurementIdapiKeyFirebase
-
+// const firebaseConfig = {
+//     apiKey: "AIzaSyBNj4vLt6FofhxMVF40bjVkfgvehfc2Rm8",
+//     authDomain: "dincy-s-cake.firebaseapp.com",
+//     databaseURL: "https://dincy-s-cake-default-rtdb.firebaseio.com",
+//     projectId: "dincy-s-cake",
+//     storageBucket: "dincy-s-cake.appspot.com",
+//     messagingSenderId: "200014312775",
+//     appId: "1:200014312775:web:402ae4a3e760cb4f864862",
+//     measurementId: "G-3CYG3MH3N4"
+//   };
 
 export const firebaseConfig = {
-    apiKey: apiKeyFirebase,
-    authDomain: authDomainapiKeyFirebase,
-    projectId: projectIdapiKeyFirebase,
-    storageBucket:     storageBucketapiKeyFirebase,
-    messagingSenderId: messagingSenderIdapiKeyFirebase,
-    appId: appIdapiKeyFirebase,
-    measurementId: measurementIdapiKeyFirebase,
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
 };
 
+
 console.log('App firebase starting: ', firebase.apps.length)
-if(!firebase.apps.length){  // previni duplicação
+if(!firebase.apps.length){  // previne duplicação
     firebase.initializeApp(firebaseConfig);
     console.log('App firebase start: ', firebase.apps.length)
-    
+}
+else{
+    firebase.app()
 }
 
 export async function pegarImagem ( storageRef ){
@@ -38,8 +45,14 @@ export async function pegarImagem ( storageRef ){
     return url
 }
 
-// exportar as funções com export function pra ver se funciona 
+// console.log('.env: ', process.env)
+
+
+
+export const realtime = firebase.database()
 export const storage = firebase.storage()
+
+
 
 // module.exports = {
 //     storage: storage,

@@ -6,7 +6,7 @@ import Imagens from '../../src/components/Imagens'
 import BannerHorizontal from '../../src/components/BannerPropagandaHorizontal'
 import GoogleAds from '../../src/components/GoogleAds'
 import BotaoSubir from '../../src/components/botaoSubir'
-import Head from 'next/dist/shared/lib/head'
+import Head from 'next/head'
 import {FaShoppingCart} from   'react-icons/fa'
 
 const {storage, pegarImagem, firebaseConfig} = require('../../src/firebase')

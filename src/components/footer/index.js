@@ -2,7 +2,7 @@
 import Logo from "../logo"
 import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 import styles from './Footer.module.css'
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
+
 
 export default function footer(props){
     return(
