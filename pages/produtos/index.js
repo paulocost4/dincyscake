@@ -9,8 +9,8 @@ import BotaoSubir from '../../src/components/botaoSubir'
 import Head from 'next/head'
 import {FaShoppingCart} from   'react-icons/fa'
 
-const {storage, pegarImagem, firebaseConfig} = require('../../src/firebase')
-import { firebase } from '../../src/firebase'
+
+import { firebase, realtime, pegarImagem, firebaseConfig, storage } from '../../src/firebase'
 
 
 export async function getStaticProps(context) {
@@ -29,7 +29,179 @@ export async function getStaticProps(context) {
     let logoref = storageRef.child('/donut.png') 
     let logoUrl = await pegarImagem( logoref )  
 
+    // PRODUTOS
+    // let produtos = (await realtime.ref('/produtos/').get()).toJSON()
+    
+    
+    
+    
+    let produtos = {
+        "cards" : {
+          "-MhxQlWhj8kHD4EkwcF3" : {
+            "item" : [ "-MhxS6SS7yWaysPCATX2", "-MhxSyKfDFn4l40NI7ZJ" ],
+            "keyItem" : "bolos",
+            "title" : "Bolos para encomenda"
+          },
+          "-MhxQlWnUQtv6Wl48XF_" : {
+            "item" : [ "-MhxTPFXiISY1nXNhASv", "-MhxTcVjYi9aIrYi1pV5" ],
+            "keyItem" : "fatias",
+            "title" : "Fatias disponiveis"
+          },
+          "-MhxQlWpkg5zFDBtj8Ui" : {
+            "item" : [ "-MhxTxBmxwbWS966gJOd" ],
+            "keyItem" : "cupcakes",
+            "title" : "Cupcakes"
+          }
+        },
+        "itens": {
+          "bolos" : {
+            "-MhxS6SS7yWaysPCATX2" : {
+              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/bolo caseirinho/caseirinho.jpg" ],
+              "price" : {
+                "grande" : "",
+                "medio" : "",
+                "pequeno" : "",
+                "unidade" : "R$30,00"
+              },
+              "sabores" : {
+                "cobertura" : [ "" ],
+                "massa" : [ "Baunilha", "Coco", "Chocolate" ]
+              },
+              "subtitle" : "tradicional e clássico pra comer com café,",
+              "title" : "Bolo caseirinho"
+            },
+            "-MhxSyKfDFn4l40NI7ZJ" : {
+              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/bolo festeiro/20210822_115717.jpg" ],
+              "price" : {
+                "grande" : "R$100,00",
+                "medio" : "R$70,00",
+                "pequeno" : "R$50,00",
+                "unidade" : ""
+              },
+              "sabores" : {
+                "cobertura" : [ "chantilinho" ],
+                "massa" : [ "cacau", "baunilha", "Coco", "biscoito" ],
+                "recheio" : [ "brigadeiro trufado", "maracujá", "Coco", "Ameixa", "brigadeiro de leite em pó" ]
+              },
+              "subtitle" : "Decorados e confeitados com massas de cacau, baunilha, Coco e biscoito, para recheios opções como brigadeiro trufado, maracujá, Coco, ameixa e brigadeiro de leite em pó e cobertura de chantilinho.",
+              "title" : "Bolo festeiro"
+            }
+          },
+          "cupcakes" : {
+            "-MhxTxBmxwbWS966gJOd" : {
+              "price" : {
+                "grande" : "",
+                "medio" : "",
+                "pequeno" : "",
+                "unidade" : "R$3,50"
+              },
+              "sabores" : {
+                "cobertura" : [ "Chantilinho e brilho" ],
+                "massa" : [ "Chocolate" ]
+              },
+              "subtitle" : "...",
+              "title" : "Jardim secreto"
+            },
+            "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/cupcake/cupcake.jpg" ]
+          },
+          "fatias" : {
+            "-MhxTPFXiISY1nXNhASv" : {
+              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/fatias/maracujá.jpg" ],
+              "price" : {
+                "grande" : "",
+                "medio" : "",
+                "pequeno" : "",
+                "unidade" : "R$5,00"
+              },
+              "sabores" : {
+                "cobertura" : [ "chantilinho" ],
+                "massa" : [ "Biscoito" ],
+                "recheio" : [ "Brigadeiro trufado e brigadeiro de leite em pó" ]
+              },
+              "subtitle" : "...",
+              "title" : "Bolo cookie 'n creame"
+            },
+            "-MhxTcVjYi9aIrYi1pV5" : {
+              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/fatias/maracujá.jpg" ],
+              "price" : {
+                "grande" : "",
+                "medio" : "",
+                "pequeno" : "",
+                "unidade" : "R$3,50"
+              },
+              "sabores" : {
+                "massa" : [ "Cacau" ],
+                "recheio" : [ "Brigadeiro trufado e Maracujá" ]
+              },
+              "subtitle" : "...",
+              "title" : "Bolo explosão de maracujá"
+            }
+          }
+        }
+      }
+      
+        
+    function parseVet(dados){   
+        let vet = []
+        for (let key in dados){
+            let value = dados[key]
+            let obj = {
+                [key] : value   // propriedade key tem origem na propriedade do objeto dados
+            }
+            vet.push( obj ) // adiciona cada propriedade do objeto dados a um vetor
+        }
+        return vet // retorna um vetor de objetos
+    }
+
+    let vetItens = parseVet(produtos.itens)    
+    let vetCards = parseVet(produtos.cards)
+    
+    let itens = ( ()=>{
+        let vet = []
+                          //0
+        vetItens.forEach( value =>{
+            let itens = value   
+            //bolos
+            for( let key in itens){
+                let produtos = itens[key]
+
+                for( let produtoKey in produtos )
+                {
+                    // console.log(produtos[produtoKey])
+                    vet.push(produtos[produtoKey])
+                }   
+            } 
+        } )
+        return vet
+    } )();
+
+    // FIltrar aqui...
+
+    // let cards = []
+    // cards = vetCards.map( (cards, cardsIndex) => {
+    //     vetItens.filter( (produtos, itemIndex) => {
+    //         vetCards.item.forEach( cardItemKey =>{
+    //             // if (cardItemKey === ){
+
+    //             // }
+    //         } )
+    //     } )
+    // } )
+
+
+
+    // Criar a logica aqui para pegar apenas os itens de um card e salva los em uma variavel
+
+    // cards = vetItens.filter( (value) => {
+
+    // } )
+    
+
+  
+
     console.log('********* PRODUTOS *********')
+
+    realtime
 
     return {
       props: {
@@ -96,8 +268,8 @@ function produtos(props){
             <main>
                 <section className={styles.section} >
 
-                   <Categorias listImgs={props.listImgs} titulo='Fatias Disponiveis' />
-                   <Categorias listImgs={props.listImgs} titulo='Bolos para encomendar' />
+                   {/* <Categorias listImgs={props.listImgs} titulo='Fatias Disponiveis' />
+                   <Categorias listImgs={props.listImgs} titulo='Bolos para encomendar' /> */}
 
 
 

@@ -63,6 +63,7 @@ export async function getStaticProps(context) {
       logoUrl: logoUrl,
       cards: cardsVet
     }, // will be passed to the page component as props
+    // revalidate: 900 // Compila a pagina novamente a cada 900 segundos (15 minutos)
   }
 }
 
@@ -98,7 +99,7 @@ function RenderizarCards({cards}){
             let {title, txt, images, key} = value
             return(
               <div key={key}>  
-                <TextoDaSeçao titulo={title} texto={ txt } />
+                <TextoDaSeçao titulo={ title === 'undefined' ? '' : title  } texto={ txt } />
                       <div className={styles.imagem}>
                         {
                           Object.keys(images).length === 1 
