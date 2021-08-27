@@ -30,115 +30,10 @@ export async function getStaticProps(context) {
     let logoUrl = await pegarImagem( logoref )  
 
     // PRODUTOS
-    // let produtos = (await realtime.ref('/produtos/').get()).toJSON()
+    let produtos = (await realtime.ref('/produtos/').get()).toJSON()
     
     
-    
-    
-    let produtos = {
-        "cards" : {
-          "-MhxQlWhj8kHD4EkwcF3" : {
-            "item" : [ "-MhxS6SS7yWaysPCATX2", "-MhxSyKfDFn4l40NI7ZJ" ],
-            "keyItem" : "bolos",
-            "title" : "Bolos para encomenda"
-          },
-          "-MhxQlWnUQtv6Wl48XF_" : {
-            "item" : [ "-MhxTPFXiISY1nXNhASv", "-MhxTcVjYi9aIrYi1pV5" ],
-            "keyItem" : "fatias",
-            "title" : "Fatias disponiveis"
-          },
-          "-MhxQlWpkg5zFDBtj8Ui" : {
-            "item" : [ "-MhxTxBmxwbWS966gJOd" ],
-            "keyItem" : "cupcakes",
-            "title" : "Cupcakes"
-          }
-        },
-        "itens": {
-          "bolos" : {
-            "-MhxS6SS7yWaysPCATX2" : {
-              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/bolo caseirinho/caseirinho.jpg" ],
-              "price" : {
-                "grande" : "",
-                "medio" : "",
-                "pequeno" : "",
-                "unidade" : "R$30,00"
-              },
-              "sabores" : {
-                "cobertura" : [ "" ],
-                "massa" : [ "Baunilha", "Coco", "Chocolate" ]
-              },
-              "subtitle" : "tradicional e clássico pra comer com café,",
-              "title" : "Bolo caseirinho"
-            },
-            "-MhxSyKfDFn4l40NI7ZJ" : {
-              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/bolo festeiro/20210822_115717.jpg" ],
-              "price" : {
-                "grande" : "R$100,00",
-                "medio" : "R$70,00",
-                "pequeno" : "R$50,00",
-                "unidade" : ""
-              },
-              "sabores" : {
-                "cobertura" : [ "chantilinho" ],
-                "massa" : [ "cacau", "baunilha", "Coco", "biscoito" ],
-                "recheio" : [ "brigadeiro trufado", "maracujá", "Coco", "Ameixa", "brigadeiro de leite em pó" ]
-              },
-              "subtitle" : "Decorados e confeitados com massas de cacau, baunilha, Coco e biscoito, para recheios opções como brigadeiro trufado, maracujá, Coco, ameixa e brigadeiro de leite em pó e cobertura de chantilinho.",
-              "title" : "Bolo festeiro"
-            }
-          },
-          "cupcakes" : {
-            "-MhxTxBmxwbWS966gJOd" : {
-              "price" : {
-                "grande" : "",
-                "medio" : "",
-                "pequeno" : "",
-                "unidade" : "R$3,50"
-              },
-              "sabores" : {
-                "cobertura" : [ "Chantilinho e brilho" ],
-                "massa" : [ "Chocolate" ]
-              },
-              "subtitle" : "...",
-              "title" : "Jardim secreto"
-            },
-            "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/cupcake/cupcake.jpg" ]
-          },
-          "fatias" : {
-            "-MhxTPFXiISY1nXNhASv" : {
-              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/fatias/maracujá.jpg" ],
-              "price" : {
-                "grande" : "",
-                "medio" : "",
-                "pequeno" : "",
-                "unidade" : "R$5,00"
-              },
-              "sabores" : {
-                "cobertura" : [ "chantilinho" ],
-                "massa" : [ "Biscoito" ],
-                "recheio" : [ "Brigadeiro trufado e brigadeiro de leite em pó" ]
-              },
-              "subtitle" : "...",
-              "title" : "Bolo cookie 'n creame"
-            },
-            "-MhxTcVjYi9aIrYi1pV5" : {
-              "images" : [ "gs://dincy-s-cake.appspot.com/imagens/produtos/fatias/maracujá.jpg" ],
-              "price" : {
-                "grande" : "",
-                "medio" : "",
-                "pequeno" : "",
-                "unidade" : "R$3,50"
-              },
-              "sabores" : {
-                "massa" : [ "Cacau" ],
-                "recheio" : [ "Brigadeiro trufado e Maracujá" ]
-              },
-              "subtitle" : "...",
-              "title" : "Bolo explosão de maracujá"
-            }
-          }
-        }
-      }
+   
       
         
     function parseVet(dados){   
@@ -158,55 +53,65 @@ export async function getStaticProps(context) {
     
     let itens = ( ()=>{
         let vet = []
-                          //0
-        vetItens.forEach( value =>{
+        vetItens.forEach( value =>{   // percorre os itens do vetor
             let itens = value   
-            //bolos
-            for( let key in itens){
+            for( let key in itens){   // percorre os objetos dentro dos itens
                 let produtos = itens[key]
-
-                for( let produtoKey in produtos )
-                {
-                    // console.log(produtos[produtoKey])
-                    vet.push(produtos[produtoKey])
+                for( let produtoKey in produtos ){  // percorre os produtos
+                  let obj = {
+                    [produtoKey]: produtos[produtoKey]
+                  }  
+                  vet.push(obj)  // adiciona os produtos ao vetor
                 }   
             } 
         } )
-        return vet
+        return vet  // retorna o vetor com todos os produtos em sequencia, sem estrutura de propriedade e valor senão da propria chave de cada produto
     } )();
+
+    
 
     // FIltrar aqui...
 
-    // let cards = []
-    // cards = vetCards.map( (cards, cardsIndex) => {
-    //     vetItens.filter( (produtos, itemIndex) => {
-    //         vetCards.item.forEach( cardItemKey =>{
-    //             // if (cardItemKey === ){
-
-    //             // }
-    //         } )
-    //     } )
-    // } )
-
-
-
-    // Criar a logica aqui para pegar apenas os itens de um card e salva los em uma variavel
-
-    // cards = vetItens.filter( (value) => {
-
-    // } )
     
+    // cards é um objeto no formato =>   {'-MhxQlWhj8kHD4EkwcF3': { item: [Object], title: 'Bolos para encomenda' }}
+    produtos = vetCards.map( (cards, cardsIndex) => {    
+        let cardKey = Object.keys(cards)[0]
+        let cardItem = cards[cardKey].item
+        
+        let card = cards[cardKey] // É exatamente o objeto dentro do objeto cards, é ai que estão o item e o titulo do card
+
+        let produtosFiltrados = []
+        itens.forEach( (produtos, itemIndex) => {    
+          let produtoKey = Object.keys(produtos)[0]
+          for(let key in cardItem){       // cards[key] =>  {0: MhxQlWhj8kHD4EkwcF3, 1: MhxQlWhj8kHD4EkwcF3}     
+            if ( cardItem[key] === produtoKey ){
+              produtosFiltrados.push(produtos)     //
+            }
+          }   
+        } )
+
+        let obj = {
+          item: produtosFiltrados,
+          title: card.title 
+        }
+
+        return obj  // retorna um objeto com item e o titulo do cards, os itens sao organizados da maneira abaixo
+        //vetor de vetores de objeto let cards = [ [{'id': value}], [{'id2': value2}, {'id3': value2}] ]
+    } )
+    console.log(produtos)
+
 
   
 
     console.log('********* PRODUTOS *********')
 
-    realtime
+    
 
     return {
       props: {
           listImgs: listImgs,
-          logoUrl: logoUrl
+          logoUrl: logoUrl,
+          produtos: produtos
       }, // will be passed to the page component as props
     }
 }
@@ -230,7 +135,9 @@ function RenderizarProduto({imagem, titulo, valor}){
     )   
 }
 
-function Categorias({titulo, listImgs}){
+
+
+function Cards({titulo, listImgs}){
     return(
             // Começar a fazer a guia de produtos daqui 
             // Bolos caseirinho: 30,00 tradicional e clássico pra comer com café, nos sabores de baunilha, Coco e chocolate.
@@ -249,14 +156,21 @@ function Categorias({titulo, listImgs}){
     )
 }
 
-function produtos(props){
-    
+export default function produtos({produtos, logoUrl, listImgs}){
+    /*
+      produtos => [
+        { item: [ [Object], [Object] ], title: 'Bolos para encomenda' },
+        { item: [ [Object], [Object] ], title: 'Fatias disponiveis' },
+        { item: [ [Object] ], title: 'Cupcakes' }
+      ]
+    */
+  
     return(
         <div>
             <Head>
                 <title>Dincy's Cake – Produtos</title> 
             </Head>
-            <Navbar logoUrl={props.logoUrl} />
+            <Navbar logoUrl={logoUrl} />
             <BannerHorizontal/>
             {/* <GoogleAds slot='2194687109'/> */}
             {/* Começar a fazer a guia de produtos daqui 
@@ -281,12 +195,11 @@ function produtos(props){
             <BannerHorizontal/>
             {/* <GoogleAds slot='3271965051'/> */}
             <BotaoSubir/>
-            <Footer logoUrl={props.logoUrl} />
+            <Footer logoUrl={logoUrl} />
         </div>
     )
 }
 
-export default produtos
 
 
 // Google adsense
