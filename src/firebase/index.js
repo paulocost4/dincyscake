@@ -38,7 +38,7 @@ export async function pegarImagem ( storageRef ){
     // console.log( await storageRef.listAll())
     let url = await storageRef.getDownloadURL().then(url => url) // Retorna a url caso tudo dê certo
     .catch(err=>{
-        console.log(err)
+        console.log('Erro ao pegar imagem no firebase Storage', err)
         return 'erro'       // Retorna 'erro' caso alguma coisa dê errado
     })
     console.log(url)

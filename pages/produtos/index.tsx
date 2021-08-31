@@ -4,17 +4,20 @@ import Navbar from '../../src/components/navbar'
 import Footer from '../../src/components/footer'
 import Imagens from '../../src/components/Imagens'
 import BannerHorizontal from '../../src/components/BannerPropagandaHorizontal'
-import GoogleAds from '../../src/components/GoogleAds'
 import BotaoSubir from '../../src/components/botaoSubir'
 import Head from 'next/head'
 import {FaShoppingCart} from   'react-icons/fa'
 
 
-import { firebase, realtime, pegarImagem, firebaseConfig, storage } from '../../src/firebase'
+import { realtime, pegarImagem, storage } from '../../src/firebase'
 import { useEffect } from 'react'
+import { GetStaticProps } from 'next'
 
 
-export async function getStaticProps(context) {
+export async function getStaticProps(context:GetStaticProps) {
+
+
+
     console.log('********* PRODUTOS *********')
     // console.log('firebaseConfig', firebaseConfig)
     
@@ -31,7 +34,48 @@ export async function getStaticProps(context) {
     let logoUrl = await pegarImagem( logoref )  
 
     // PRODUTOS
-    let produtos
+        // Definindo os tipos do TypeScript
+    
+    type Item = {
+        images: String[]
+        price: {
+            grande? : string,
+            medio? : string,
+            pequeno? : string,
+            unidade? : string
+        },
+        sabores: {
+            cobertura: String[],
+            massa: String[]
+            recheio?: String[]
+        },
+        subtitle : string,
+        title : string
+    }
+    
+    type VetItens = Array<{
+        [nomeProduto: string]:
+            {
+                [key: string]: Item
+            }
+    }>
+
+    type VetCards = Array<{
+        [key: string]: {
+            item: String[],
+            title: string
+        }
+    }>
+
+    type Produtos = Array<{
+        title: string,
+        item: Array<{
+            [key: string]: Item
+        }>
+    }>
+
+
+    let produtos: Produtos
     await realtime.ref('/produtos/').once('value', (snapshot)=>{   // pega todos os dados do arquivo produto se existir 
         if (snapshot.exists()){
             console.log('EXISTE!!!')
@@ -49,14 +93,16 @@ export async function getStaticProps(context) {
             }
 
             let {cards:snapshotCard, itens:snapshotItem} = snapshot.val()
-            let vetItens = parseVet(snapshotItem)      // transforma em um vetor de objetos 
-            let vetCards = parseVet(snapshotCard)      // transforma em um vetor de objetos 
-
+            let vetItens: VetItens = parseVet(snapshotItem)      // transforma em um vetor de objetos 
+            let vetCards: VetCards = parseVet(snapshotCard)      // transforma em um vetor de objetos 
+        
+        
 
             // Aqui eu realizo algumas transformações nos dados em PRODUTOS e ITENS para que eles fiquem da forma que eu quero utilizar 
             let itens = ( ()=>{
                 let vet = []
-                vetItens.forEach( value =>{   // percorre os itens do vetor
+                vetItens.forEach( ( value ) =>{   // percorre os itens do vetor
+                    
                     let itens = value   
                     for( let key in itens){   // percorre os objetos dentro dos itens
                         let produtos = itens[key]
@@ -92,10 +138,20 @@ export async function getStaticProps(context) {
                     title: card.title,  
                     item: produtosFiltrados
                 }
-        
                 return obj  // retorna um objeto com item e o titulo do cards, os itens sao organizados da maneira abaixo
                 //vetor de vetores de objeto let cards = [ [{'id': value}], [{'id2': value2}, {'id3': value2}] ]
             } )
+
+            console.log('produtos => \n', JSON.stringify(produtos, null, 2))
+            // let imagePromisses = produtos.map( async ( value )=>{
+            //     let img = value.item.map( async ( item, index )=>{
+            //         let itemKey = Object.keys(item)[index]
+            //         //continuar aqui para pegar a url de cada imagem e adicionar em vetor de promisses para utilizar o Promisse.all([])
+
+            //         // return img
+            //     })
+            //     return img
+            // })
 
         }
         else console.log('Dados não existentes')
