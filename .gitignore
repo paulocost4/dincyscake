@@ -40,3 +40,6 @@ yarn-error.log*
 # Api provisoria que eu não sei se usarei
 src/services/api.js
 next.config.js
+
+.prettierignore
+
