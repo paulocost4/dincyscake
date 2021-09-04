@@ -12,5 +12,10 @@ module.exports = {
     messagingSenderId: "200014312775",
     appId: "1:200014312775:web:402ae4a3e760cb4f864862",
     measurementId: "G-3CYG3MH3N4"
+  },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
   }
 }
