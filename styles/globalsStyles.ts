@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #f5f5f5;
+    background-color: ${( ( props ) => props.theme.backGroundColor )};
     background-image: url('../public/images/patern.png');
     background-repeat: repeat;
   }

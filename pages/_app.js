@@ -15,8 +15,10 @@ function MyApp( { Component, pageProps } ) {
         <style>{`
           // Fonte Logo
           @import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
-          // Fonte corpo do site
+          // Fonte corpo do site para titulos
           @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200&display=swap');
+          // Google serif => noto serif
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
         `}
         </style>
       </Helmet>

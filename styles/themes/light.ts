@@ -2,15 +2,13 @@
 export default {
   title: 'light',
   colors: {
-    // primary: '#f12a5e',
-    primary: '#ff4f79', // brink pink from coolors
-    // secundary: '#F17827',
-    secundary: '#A11692', // dark magent from coolors
+    primary: '#f12a5e',
+    secundary: '#F17827', // dark magent from coolors
 
   },
   text: {
     color: '#fff',
     fontFamily: 'Montserrat',
   },
-  backGroundColor: '#000',
+  backGroundColor: '#fff',
 }

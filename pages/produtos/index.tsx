@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import Image from 'next/image'
 import BannerHorizontal from '../../src/components/BannerPropagandaHorizontal'
@@ -9,7 +8,7 @@ import Navbar from '../../src/components/navbar'
 import { realtime, pegarImagem, storage } from '../../src/firebase'
 
 import {
-  ProdutoCard, Card, AreaItem, TituloCard, AreaProduto, AreaImagem,
+  CardsArea, Card, AreaItem, AreaProduto, AreaImagem, AreaBotao, Botao, Preco, Linha,
 } from '../../styles/Produto.styles' // importações dos styled component
 // componentes de estilo global
 import { Main } from '../../styles/globalsStyles'
@@ -59,54 +58,67 @@ type RenderizarProdutoProps = {
 
 function RenderizarProduto( { produtos }: RenderizarProdutoProps ) {
   return (
+    // Area em volta de todos os cards
+    <CardsArea>
+      {produtos.map( ( cards, index ) => (
+        // Card com os produtos e titulo do card
+        <div>
 
-    <ProdutoCard>
-      {produtos.map( ( cards ) => (
-        // <div>
-        <Card key={cards.title}>
-          <TituloCard>{cards.title}</TituloCard>
-          <AreaProduto>
-            {
+          <Card key={cards.title}>
+            <h1>{cards.title}</h1>
+            {/* Area com todos os produtos do card dentro */}
+            <AreaProduto>
+              {
               cards.item.map( ( item ) => {
-                const key = Object.keys( item )[ 0 ]
-                const produto = item[ key ]
+                const keyItem = Object.keys( item )[ 0 ]
+                const produto = item[ keyItem ]
+                const keyPrices = Object.keys( produto.price )
+                let menorPreco = 999
+                let qtdItensMaiorQueZero = 0
+                // continuar aqui
+                keyPrices.forEach( ( key ) => { // faz uma concatenação com os preços pra exibir eles no formato R$3,50 / R$30,50 / R$5,50
+                  const preco = Number( produto.price[ key ].replace( 'R$', '' ).replace( ',', '.' ) ) // Retira o R$ se houver e troca a , pelo .
+                  qtdItensMaiorQueZero = preco ? qtdItensMaiorQueZero + 1 : qtdItensMaiorQueZero // adiciona mais um se houver um item maior que 0
+                  if ( produto.price[ key ] !== '' && preco < menorPreco ) {
+                    menorPreco = preco
+                  }
+                } )
+                const textoPreco = `${qtdItensMaiorQueZero > 1 ? 'Apartir de' : ''}`
+                const preco = `R$ ${menorPreco.toFixed( 2 )}`
+                // definir aqui a altura e largura usadas nos componentes areaimagem e Image
+                // proporção 4:3 => 8:6
+                const imgHeight = 228
+                const imgWidth = 304
                 return (
-                  <AreaItem key={key}>
-                    <AreaImagem>
-                      <Image height={400} width={300} src={produto.images[ 0 ]} />
+                  // Area com item propriamente dito, com imagem, titulo e preço
+                  <AreaItem key={keyItem}>
+                    <AreaImagem height={imgHeight} width={imgWidth}>
+                      <Image height={imgHeight} width={imgWidth} objectFit='fill' src={produto.images[ 0 ]} />
                     </AreaImagem>
                     <h1>{produto.title}</h1>
-                    <h2>{produto.price.unidade}</h2>
+                    <Preco disable={textoPreco === ''}>
+                      <p>
+                        { textoPreco }
+                        &nbsp;
+                      </p>
+                      <h2>{ preco }</h2>
+                    </Preco>
+                    <AreaBotao>
+                      <Botao>COMPRAR</Botao>
+                      <FaShoppingCart size='16' className='botaoCarrinho' />
+                    </AreaBotao>
                   </AreaItem>
                 )
               } )
             }
-          </AreaProduto>
-          {/* <RenderizarProduto
-                imagem={listImgs[ 0 ]}
-                titulo='Bolo Caseirinho'
-                valor='R$30,00'
-              />
-            */}
-        </Card>
-        // </div>
+            </AreaProduto>
+          </Card>
+          {/* Renderiza uma linha apoós cada card, exceto na ultima linha */}
+          {produtos.length - 1 !== index ? <Linha /> : null}
+        </div>
+
       ) )}
-      {/* <div className={styles.imagem}>
-        <Imagens src={[ imagem ]} tipo={[ 'full' ]} />
-      </div>
-      <div className={styles.infomarçoes}>
-        <h1 className={styles.titulo}>{titulo}</h1>
-        <h2 className={styles.valor}>{valor}</h2>
-      </div>
-      <div className={styles.areaButoes}>
-        <button type='button' className={styles.botaoDetalhe}>
-          DETALHES
-        </button>
-        <button type='button' className={styles.botaoCarrinho}>
-          <FaShoppingCart />
-        </button>
-      </div> */}
-    </ProdutoCard>
+    </CardsArea>
 
   )
 }
@@ -117,12 +129,6 @@ type PropsProdutos = {
 };
 
 export default function Produtos( { produtos, logoUrl }: PropsProdutos ) {
-  const [ dadosRecebidos, setDadosRecebidos ] = useState( false )
-
-  useEffect( () => {
-    setDadosRecebidos( true )
-  }, [ produtos ] )
-
   /*
       dados estruturados para a prop produtos separado por cards (indices do vetor produto)
       produtos => [
