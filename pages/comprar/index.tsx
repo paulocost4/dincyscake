@@ -3,12 +3,12 @@ import Navbar from '../../src/components/navbar'
 import Footer from '../../src/components/footer'
 import { Main } from '../../styles/globalsStyles'
 
-export default function Encomendas() {
+export default function Comprar() {
   return (
     <div>
-      <Navbar mostrarCarrinho quantidadeCarrinho={2}/>
+      <Navbar />
       <Main>
-        <h1>Encomendas</h1>
+        <h1>Comprar</h1>
       </Main>
       <Footer />
     </div>

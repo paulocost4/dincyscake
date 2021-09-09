@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { FaShoppingCart } from 'react-icons/fa'
 import Image from 'next/image'
 import BannerHorizontal from '../../src/components/BannerPropagandaHorizontal'
-import BotaoSubir from '../../src/components/botaoSubir'
 import Footer from '../../src/components/footer'
 import Navbar from '../../src/components/navbar'
 import { realtime, pegarImagem, storage } from '../../src/firebase'
@@ -62,7 +61,7 @@ function RenderizarProduto( { produtos }: RenderizarProdutoProps ) {
     <CardsArea>
       {produtos.map( ( cards, index ) => (
         // Card com os produtos e titulo do card
-        <div>
+        <div key={cards.title}>
 
           <Card key={cards.title}>
             <h1>{cards.title}</h1>
@@ -159,7 +158,7 @@ export default function Produtos( { produtos, logoUrl }: PropsProdutos ) {
       </Main>
       <BannerHorizontal />
       {/* <GoogleAds slot='3271965051'/> */}
-      <BotaoSubir />
+
       <Footer logoUrl={logoUrl} />
     </div>
   )

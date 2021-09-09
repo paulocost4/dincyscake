@@ -143,8 +143,7 @@ export default function Home(props) {
       <main className={styles.main}>
         <RenderizarCards cards={cards} />
       </main>
-      {/* Botão para ir para o topo da pagina */}
-      <BotaoSubir />
+
 
       <Footer logoUrl={props.logoUrl} />
     </div>
