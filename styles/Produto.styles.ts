@@ -16,8 +16,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   /* background-color: #f2eeee; */
-  margin: 64px;
-  margin-bottom: 72px; // a margem inferior precisa ser 8px maior para compensar o vazio deixado pela fonte do titulo do proximo card
+  margin: 24px 64px 64px 96px;
   border-radius: 8px;
 
   & > h1{ //Titulo do card
@@ -29,7 +28,6 @@ export const Card = styled.div`
     text-align: center;
     align-self: center;
     text-transform: capitalize;
-    margin-top: 0px;
 
   };
 
@@ -55,7 +53,7 @@ export const AreaItem = styled.div`
   width: auto;
   padding: 16px;
   align-items: center;
-  margin: 16px 24px;
+  margin: 24px 24px;
   /* border: 1px solid #c1c1c1; */
   box-shadow: 0px 0px 5px 0px #c1c1c1;
   & > h1{ // Nome do produto
