@@ -10,16 +10,17 @@ export const Container = styled.div`
   align-items: center;
 `
 
-export const CardLogin = styled.div`
+export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 680px;
-  height: 576px;
+  width: auto;
+  height: auto;
   background: #FFFFFF;
   box-shadow: 0px 0px 5px 1px #c3c3c3;
   border-radius: 24px;
+  padding: 64px;
 `
 export const Input = styled.input`
   height: 40px;
@@ -36,7 +37,7 @@ export const Input = styled.input`
 `
 export const Label = styled.label`
   align-self: flex-start;
-  margin-left: 112px;
+  margin-left: 16px;
   margin-top: 40px;
   margin-bottom: 8px;
 `
@@ -56,8 +57,13 @@ export const Button = styled.button`
 
 `
 
-export const TextoCadastrar = styled.span`
-  color: #d4d4d4;
+export const Texto = styled.span`
+  color: #B4B4B4;
   font-family: noto-serif;
   margin-top: 8px;
+
+  &:hover{
+    color: ${( props ) => props.theme.colors.primary}
+  }
+
 `
