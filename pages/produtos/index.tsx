@@ -142,7 +142,7 @@ export default function Produtos( { produtos, logoUrl }: PropsProdutos ) {
       <Head>
         <title>Dincy&prime;s Cake – Produtos</title>
       </Head>
-      <Navbar logoUrl={logoUrl} />
+      <Navbar logoUrl={logoUrl} mostrarCarrinho={false} quantidadeCarrinho={0} />
       <BannerHorizontal />
       {/* <GoogleAds slot='2194687109'/> */}
       {/* Começar a fazer a guia de produtos daqui
