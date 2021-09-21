@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import {
-  CardLogin, Container, InputLogin, Input, Label, Button, TextoCadastrar,
+  CardLogin, Container, Input, Label, Button, TextoCadastrar,
 } from './styles'
 import logo from '../../public/images/Logo.png'
 
