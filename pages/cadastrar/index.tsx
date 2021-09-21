@@ -1,4 +1,4 @@
-import Container from './styles'
+import Container from '../../styles/Cadastrar.styles'
 
 export default function Login() {
   return (

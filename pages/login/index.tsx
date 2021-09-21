@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import {
   CardLogin, Container, Input, Label, Button, TextoCadastrar,
-} from './styles'
+} from '../../styles/Login.styles'
 import logo from '../../public/images/Logo.png'
 
 export default function Login() {

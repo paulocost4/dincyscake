@@ -1,4 +1,4 @@
-import card from './styles'
+// import card from '../../styles/Comprar.styles'
 import Navbar from '../../src/components/navbar'
 import Footer from '../../src/components/footer'
 import { Main } from '../../styles/globalsStyles'
