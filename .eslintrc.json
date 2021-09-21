@@ -25,6 +25,7 @@
         "styled-components-a11y"
     ],
     "rules": {
+      "jsx-a11y/label-has-for": "off",
       "jsx-quotes": ["error", "prefer-single"],
       "quotes": ["error", "single", { "allowTemplateLiterals": true }],
       "semi":  ["error", "never"],
