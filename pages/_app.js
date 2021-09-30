@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import light from '../styles/themes/light'
 import {GlobalStyle} from '../styles/globalsStyles'
 import {Helmet} from "react-helmet"
-
+import AuthContext from '../src/context/index'
 function MyApp( { Component, pageProps } ) {
   return (
     <div>
@@ -22,10 +22,12 @@ function MyApp( { Component, pageProps } ) {
         `}
         </style>
       </Helmet>
-      <ThemeProvider theme={light}>
-        <GlobalStyle/>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <AuthContext>
+        <ThemeProvider theme={light}>
+          <GlobalStyle/>
+            <Component {...pageProps} />
+        </ThemeProvider>
+      </AuthContext>
     </div>
   )
 }

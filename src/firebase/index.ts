@@ -36,6 +36,7 @@ export async function pegarImagem( storageRef: firebase.storage.Reference ): Pro
 
 export const realtime = firebase.database()
 export const storage = firebase.storage()
+export const auth = firebase.auth()
 
 // module.exports = {
 //     storage: storage,

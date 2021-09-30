@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { tint } from 'polished'
 
 export const Container = styled.div`
@@ -38,7 +38,6 @@ export const Input = styled.input`
 export const Label = styled.label`
   align-self: flex-start;
   margin-left: 16px;
-  margin-top: 40px;
   margin-bottom: 8px;
 `
 export const Button = styled.button`
@@ -63,7 +62,41 @@ export const Texto = styled.span`
   margin-top: 8px;
 
   &:hover{
-    color: ${( props ) => props.theme.colors.primary}
+    color: ${( props ) => props.theme.colors.primary};
   }
 
+`
+export const ContainerLabel = styled.div`
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-between;
+  width: 100%;
+  /* flex-direction: row; */
+
+  & > span{
+    color: #f00;
+  }
+
+`
+
+const rotate = keyframes`
+  from{
+      transform: rotate(0deg);
+    }
+  to{
+    transform: rotate(360deg);
+
+  }
+`
+
+export const Spinner = styled.div`
+  display: flex;
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+  border-width: 24px;
+  border-color: #e5e5e5;
+  border-top-color: ${( props ) => props.theme.colors.primary};
+  border-style: solid;
+  animation: ${rotate} 0.5s ease-in infinite;
 `
