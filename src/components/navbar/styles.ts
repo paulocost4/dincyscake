@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
 export const AreaNavBar = styled.div`
-display: flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     height: 50px;
     width: 100%;
     justify-content: space-around;
-    padding: 5px;
+    padding: 5px 0px;
+    box-shadow: 0px 5px 5px 0px #c1c1c1;
 
     @media screen and (max-width: 700px) {
       & {

@@ -8,8 +8,10 @@ export const CardStatusAplicacao = styled.div`
   padding: 0px 16px 21px 16px;
   flex-direction: column;
 
-  & > h1 {
+  & > p {
     padding: 0px 50px;
+    text-align: justify;
+    font-size: 20px;
   }
 `
 
