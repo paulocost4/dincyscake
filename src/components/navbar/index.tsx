@@ -4,6 +4,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Logo from '../logo'
+
 import {
   AreaNavBar, ContadorCarrinho, ItemNavBar, NavBar, PopUpSobre, PorpUpItem,
 } from './styles'
@@ -40,12 +41,8 @@ function popUp() {
   console.log( 'pop up: ', janelaPopUp.style.left, janelaPopUp.style.right, janelaPopUp.style.top )
   console.log( posiçaoDoSobre )
 }
-interface NavBarProps{
-  mostrarCarrinho: boolean
-  quantidadeCarrinho: number
-}
 
-export default function Navbar( { mostrarCarrinho, quantidadeCarrinho }: NavBarProps ) {
+export default function Navbar( { mostrarCarrinho, quantidadeCarrinho }: { mostrarCarrinho: boolean, quantidadeCarrinho: number } ) {
   const [ popUpStatus, setPopUpStatus ] = useState( 0 )
   const boundingClientRectObj:DOMRect = {
     height: 0,

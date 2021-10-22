@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { FaShoppingCart } from 'react-icons/fa'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import BannerHorizontal from '../../src/components/BannerPropagandaHorizontal'
 import Footer from '../../src/components/footer'
 import Navbar from '../../src/components/navbar'
@@ -8,10 +10,9 @@ import { realtime, pegarImagem, storage } from '../../src/firebase'
 
 import {
   CardsArea, Card, AreaItem, AreaProduto, AreaImagem, AreaBotao, Botao, Preco, Linha,
-} from '../../styles/Produto.styles' // importações dos styled component
+} from '../../styles/Produtos.styles' // importações dos styled component
 // componentes de estilo global
 import { Main } from '../../styles/globalsStyles'
-
 // Definindo os tipos do TypeScript
 type Item = {
   images: string[];
@@ -56,6 +57,7 @@ type RenderizarProdutoProps = {
 }
 
 function RenderizarProduto( { produtos }: RenderizarProdutoProps ) {
+  const router = useRouter()
   return (
     // Area em volta de todos os cards
     <CardsArea>
@@ -103,7 +105,7 @@ function RenderizarProduto( { produtos }: RenderizarProdutoProps ) {
                       <h2>{ preco }</h2>
                     </Preco>
                     <AreaBotao>
-                      <Botao>COMPRAR</Botao>
+                      <Botao onClick={() => router.push( `produtos/${keyItem}`, 'produtos/id' )}>COMPRAR</Botao>
                       <FaShoppingCart size='16' className='botaoCarrinho' />
                     </AreaBotao>
                   </AreaItem>

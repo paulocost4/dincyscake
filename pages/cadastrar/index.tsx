@@ -7,7 +7,7 @@ import { useRouter } from 'next/dist/client/router'
 import StatusDaAplicação from '../../src/components/StatusDaAplicaçao'
 import { ContainerStatusDaAplicaçao } from '../../styles/StatusDaAplicaçao'
 import {
-  Card, Container, Input, Label, Button, Texto, ContainerLabel, Spinner,
+  Card, Container, Input, Label, Button, Texto, ContainerLabel, Spinner, ContainerInput, ContainerLogo,
 } from '../../styles/Login-Cadastrar.styles'
 import logo from '../../public/images/Logo.png'
 
@@ -95,23 +95,31 @@ export default function Cadastrar( { goTo } : {goTo?: string} ) {
     <Container>
       <Card>
         {/* /home/paulo/Documentos/CodicosReactJs/dincyscake/public/images/Logo.png */}
-        <Image src={logo} width='328' height='40' placeholder='blur' />
+        <ContainerLogo>
+          <Image src={logo} width='328' height='40' placeholder='blur' />
+        </ContainerLogo>
+        <ContainerInput>
+          <ContainerLabel>
+            <Label htmlFor='email'>Email</Label>
+            <span id='spanEmail' />
+          </ContainerLabel>
+          <Input onClick={() => setEmailFocado( true )} value={email} onChange={( e ) => { setEmail( e.target.value ) }} id='email' type='text' required placeholder='email@dincyscake.com' />
+        </ContainerInput>
+        <ContainerInput>
+          <ContainerLabel>
+            <Label htmlFor='senha'>Senha</Label>
+            <span id='spanSenha' />
+          </ContainerLabel>
+          <Input onClick={() => setSenhaFocado( true )} value={senha} onChange={( e ) => { setSenha( e.target.value ) }} id='senha' type='password' required placeholder='Digite aqui a sua senha' />
+        </ContainerInput>
+        <ContainerInput>
+          <ContainerLabel>
+            <Label htmlFor='confirmarsenha'>Confirmar senha</Label>
+            <span id='spanConfirmarSenha' />
+          </ContainerLabel>
+          <Input onClick={() => setConfirmarSenhaFocado( true )} value={confirmarSenha} onChange={( e ) => { setConfirmarSenha( e.target.value ) }} id='confirmarsenha' type='password' required placeholder='Digite a senha novamente para confirmar' />
+        </ContainerInput>
 
-        <ContainerLabel>
-          <Label htmlFor='email'>Email</Label>
-          <span id='spanEmail' />
-        </ContainerLabel>
-        <Input onClick={() => setEmailFocado( true )} value={email} onChange={( e ) => { setEmail( e.target.value ) }} id='email' type='text' required placeholder='email@dincyscake.com' />
-        <ContainerLabel>
-          <Label htmlFor='senha'>Senha</Label>
-          <span id='spanSenha' />
-        </ContainerLabel>
-        <Input onClick={() => setSenhaFocado( true )} value={senha} onChange={( e ) => { setSenha( e.target.value ) }} id='senha' type='password' required placeholder='Digite aqui a sua senha' />
-        <ContainerLabel>
-          <Label htmlFor='confirmarsenha'>Confirmar senha</Label>
-          <span id='spanConfirmarSenha' />
-        </ContainerLabel>
-        <Input onClick={() => setConfirmarSenhaFocado( true )} value={confirmarSenha} onChange={( e ) => { setConfirmarSenha( e.target.value ) }} id='confirmarsenha' type='password' required placeholder='Digite a senha novamente para confirmar' />
         <Button onClick={() => { cadastrar() }}>CADASTRAR</Button>
         <Texto>
           <Link href='login'>Ja tem um cadastro? Entre em sua conta clicando aqui.</Link>
@@ -121,10 +129,10 @@ export default function Cadastrar( { goTo } : {goTo?: string} ) {
         carregando && ( <ContainerStatusDaAplicaçao><Spinner /></ContainerStatusDaAplicaçao> )
       }
       {
-        erro && <StatusDaAplicação setErro={setErro} mensagem={erro} />
+        erro && <StatusDaAplicação setMensagem={setErro} mensagem={erro} />
       }
       {
-        cadastrado && <StatusDaAplicação setErro={setCadastrado} mensagem='Cadastrado com sucesso!' />
+        cadastrado && <StatusDaAplicação setMensagem={setCadastrado} mensagem='Cadastrado com sucesso!' />
       }
 
     </Container>
